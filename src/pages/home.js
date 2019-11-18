@@ -4,6 +4,8 @@ import React from 'react';
 import NavBar from "./navbar";
 import Footer from "./footer";
 
+import './css/homeStyle.css';
+
 export default class HomePage extends React.Component {
     render = () => {
         return (
@@ -12,4 +14,5 @@ export default class HomePage extends React.Component {
             </div>
         );
     }
+
 }
