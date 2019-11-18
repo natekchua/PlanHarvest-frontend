@@ -5,7 +5,6 @@ import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
 //Import desktop pages 
 import HomePage from './pages/home';
 
-
 export default class App extends React.Component {
     render = () => {
         return (
