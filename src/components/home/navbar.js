@@ -16,7 +16,7 @@ export default class NavBar extends Component {
                     </span>
                 </h1>
                 <ul>
-                    <li><Link to="home.js">Home</Link></li>
+                    <li><Link to="home">Home</Link></li>
                     <li><Link to="">About</Link></li>
                     <li><Link to="">Services</Link></li>
                 </ul>

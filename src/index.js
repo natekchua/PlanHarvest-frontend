@@ -4,8 +4,8 @@ import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
 
 //Import desktop pages 
 import HomePage from './pages/home';
-import SignUp from './pages/signUp';
-
+import SignUp from './pages/account';
+import LogIn from './components/registration/LogInCard'
 export default class App extends React.Component {
     render = () => {
         return (
@@ -14,6 +14,7 @@ export default class App extends React.Component {
                     <Route exact path="/" component={() => <HomePage />} />
                     <Route exact path="/home" component={() => <HomePage />} />
                     <Route exact path="/signup" component={() => <SignUp />} />
+                    <Route exact path="/login" component={() => <LogIn />} />
                 </Switch>
             </Router>
         );
