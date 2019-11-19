@@ -4,6 +4,7 @@ import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
 
 //Import desktop pages 
 import HomePage from './pages/home';
+import SignUp from './pages/signUp';
 
 export default class App extends React.Component {
     render = () => {
@@ -12,6 +13,7 @@ export default class App extends React.Component {
                 <Switch>
                     <Route exact path="/" component={() => <HomePage />} />
                     <Route exact path="/home" component={() => <HomePage />} />
+                    <Route exact path="/signup" component={() => <SignUp />} />
                 </Switch>
             </Router>
         );

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import style from '../pages/css/homeStyle.css'
-import home from "../pages/home";
+import style from '../../pages/css/homeStyle.css'
+import home from "../../pages/home";
 
 export default class NavBar extends Component {
     // constructor(props){
