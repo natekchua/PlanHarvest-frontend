@@ -1,7 +1,6 @@
 import React from 'react';
 
 import '../../pages/css/registrationStyle.css';
-import LogInCard from "./LogInCard";
 
 export default class SignUpCard extends React.Component{
     render = () => {

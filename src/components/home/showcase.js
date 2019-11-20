@@ -11,7 +11,7 @@ export default class Showcase extends Component {
                     </h1>
                     <div className="btn-container">
                         <a href="signUp" className="btn lead">I Am a Contractor</a>
-                        <a href="" className="btn lead">I Am a Farmer</a>
+                        <a href="signUp" className="btn lead">I Am a Farmer</a>
                     </div>
                 </div>
             </header>

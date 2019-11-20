@@ -5,7 +5,9 @@ import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
 //Import desktop pages 
 import HomePage from './pages/home';
 import SignUp from './pages/account';
-import LogIn from './components/registration/LogInCard'
+import LogIn from './components/registration/LogInCard';
+import FDashBoard from './components/farmer/farmer-dashboard';
+
 export default class App extends React.Component {
     render = () => {
         return (
@@ -15,6 +17,7 @@ export default class App extends React.Component {
                     <Route exact path="/home" component={() => <HomePage />} />
                     <Route exact path="/signup" component={() => <SignUp />} />
                     <Route exact path="/login" component={() => <LogIn />} />
+                    <Route exact path="/farmer-dashboard" component={() => <FDashBoard />} />
                 </Switch>
             </Router>
         );
