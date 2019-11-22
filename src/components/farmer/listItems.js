@@ -7,11 +7,25 @@ import DashboardIcon from '@material-ui/icons/Dashboard';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import PeopleIcon from '@material-ui/icons/People';
 import BarChartIcon from '@material-ui/icons/BarChart';
+import HomeIcon from '@material-ui/icons/Home';
+
 import LayersIcon from '@material-ui/icons/Layers';
 import AssignmentIcon from '@material-ui/icons/Assignment';
+import {Link} from "react-router-dom";
 
+function routeTo(name){
+    return (
+        <Link to={name}/>
+    );
+}
 export const mainListItems = (
     <div>
+        <ListItem button onClick={routeTo("home")}>
+            <ListItemIcon>
+                <HomeIcon />
+            </ListItemIcon>
+            <ListItemText primary="Home" />
+        </ListItem>
         <ListItem button>
             <ListItemIcon>
                 <DashboardIcon />

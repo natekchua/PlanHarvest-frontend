@@ -3,7 +3,6 @@ import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Drawer from '@material-ui/core/Drawer';
-import Box from '@material-ui/core/Box';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
@@ -17,14 +16,12 @@ import Paper from '@material-ui/core/Paper';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
-import Layout from "../layout";
-import Footer from '../home/footer';
 import { mainListItems } from './listItems';
 import Inventory from './inventory';
 import Contracts from './contracts';
 import Assets from './assets';
 
-const drawerWidth = 220;
+const drawerWidth = 180;
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -32,6 +29,8 @@ const useStyles = makeStyles(theme => ({
     },
     toolbar: {
         paddingRight: 24, // keep right padding when drawer closed
+        color: '#93cb52',
+        backgroundColor: '#333'
     },
     toolbarIcon: {
         display: 'flex',
@@ -63,6 +62,8 @@ const useStyles = makeStyles(theme => ({
     },
     title: {
         flexGrow: 1,
+        color: '#93cb52',
+        backgroundColor: '#333',
     },
     drawerPaper: {
         position: 'relative',
@@ -117,7 +118,6 @@ export default function Dashboard() {
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
     return (
-        <Layout>
         <div className={classes.root}>
             <CssBaseline />
             <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
@@ -131,7 +131,7 @@ export default function Dashboard() {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Typography component="h1" variant="h5" background-color="#93cb52" noWrap className={classes.title}>
+                    <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
                         Farmer Dashboard
                     </Typography>
                     <IconButton color="inherit">
@@ -181,7 +181,5 @@ export default function Dashboard() {
                 </Container>
             </main>
         </div>
-        </Layout>
-
     );
 }

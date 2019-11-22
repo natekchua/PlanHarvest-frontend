@@ -14,7 +14,7 @@ export default function Deposits() {
     const classes = useStyles();
     return (
         <React.Fragment>
-            <h1>Assets</h1>
+            <h1>My Farm</h1>
             <Typography component="p" variant="h6">
                 Field A
             </Typography>
