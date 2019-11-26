@@ -2,7 +2,6 @@ import React from 'react';
 
 import '../../pages/css/registrationStyle.css';
 import Layout from "../layout";
-import Link from "@material-ui/core/Link";
 
 export default class LogInCard extends React.Component{
     render = () => {
@@ -20,7 +19,7 @@ export default class LogInCard extends React.Component{
                                 <label htmlFor="password">Password</label>
                                 <input type="password" name="password" id="password"/>
                             </div>
-                            <button type="submit" className="btn" onClick={<a href="../farmer/farmer-dashboard.js"/>}>Log In</button>
+                            <a href="farmer-dashboard" type="submit" className="btn">Log In</a>
                         </form>
                     </div>
                 </div>

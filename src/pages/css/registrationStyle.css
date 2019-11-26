@@ -69,6 +69,12 @@ a{
     cursor: pointer;
 }
 
+.btn{
+    width: 95%;
+    text-align: center;
+    margin-top: 1rem;
+}
+
 .form-wrap button:hover{
     background: #93cb52;
 }
