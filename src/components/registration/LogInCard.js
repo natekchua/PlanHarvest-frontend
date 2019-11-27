@@ -4,6 +4,10 @@ import '../../pages/css/registrationStyle.css';
 import Layout from "../layout";
 
 export default class LogInCard extends React.Component{
+    testClick = (event) => {
+        console.log(fetch("http://plan-harvest.herokuapp.com/"));
+    };
+    
     render = () => {
         return (
             <Layout>
@@ -19,7 +23,7 @@ export default class LogInCard extends React.Component{
                                 <label htmlFor="password">Password</label>
                                 <input type="password" name="password" id="password"/>
                             </div>
-                            <a href="farmer-dashboard" type="submit" className="btn">Log In</a>
+                            <a onClick={this.testClick} type="submit" className="btn">Log In</a>
                         </form>
                     </div>
                 </div>
