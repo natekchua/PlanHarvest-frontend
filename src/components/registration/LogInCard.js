@@ -5,7 +5,8 @@ import Layout from "../layout";
 
 export default class LogInCard extends React.Component{
     testClick = (event) => {
-        fetch("http://plan-harvest.herokuapp.com/").then(console.log(response));
+        fetch("http://plan-harvest.herokuapp.com/")
+        .then(response => console.log(response.json()));
     };
 
     render = () => {
