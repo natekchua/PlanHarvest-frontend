@@ -7,6 +7,7 @@ import HomePage from './pages/home';
 import SignUp from './pages/account';
 import LogIn from './components/registration/LogInCard';
 import FDashBoard from './components/farmer/farmer-dashboard';
+import FInventory from './components/farmer/inventory';
 
 export default class App extends React.Component {
     render = () => {
@@ -18,6 +19,7 @@ export default class App extends React.Component {
                     <Route exact path="/signup" component={() => <SignUp />} />
                     <Route exact path="/login" component={() => <LogIn />} />
                     <Route exact path="/farmer-dashboard" component={() => <FDashBoard />} />
+                    <Route exact path="/farmer-inventory" component={() => <FInventory />} />
                 </Switch>
             </Router>
         );

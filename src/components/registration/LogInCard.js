@@ -24,7 +24,7 @@ export default class LogInCard extends React.Component{
                                 <label htmlFor="password">Password</label>
                                 <input type="password" name="password" id="password"/>
                             </div>
-                            <a onClick={this.testClick} type="submit" className="btn">Log In</a>
+                            <a href="farmer-dashboard" type="submit" className="btn">Log In</a>
                         </form>
                     </div>
                 </div>
