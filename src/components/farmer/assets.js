@@ -1,16 +1,22 @@
 /* eslint-disable no-script-url */
 import React from 'react';
-import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import ViewMoreButton from '../viewMoreButton';
 
 const useStyles = makeStyles({
     depositContext: {
         flex: 1,
     },
+    centerButton: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        textAlign: 'center',
+    },
 });
 
-export default function Deposits() {
+export default function Assets() {
     const classes = useStyles();
     return (
         <React.Fragment>
@@ -23,11 +29,7 @@ export default function Deposits() {
                 <p>Bins: 5</p>
                 <p>Sheds: 8</p>
             </Typography>
-            <div>
-                <Link color="primary" href="javascript:;">
-                    View Assets
-                </Link>
-            </div>
+            <ViewMoreButton className={classes.centerButton} name="All Assets" />
         </React.Fragment>
     );
 }

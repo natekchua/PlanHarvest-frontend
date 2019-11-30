@@ -1,12 +1,12 @@
 /* eslint-disable no-script-url */
 import React from 'react';
-import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import ViewMoreButton from '../viewMoreButton';
 
 // Generate Order Data
 function createContract(id, custID, farmID, numLoads, startDate, deliveryByDate, outcome) {
@@ -25,12 +25,21 @@ const useStyles = makeStyles(theme => ({
     seeMore: {
         marginTop: theme.spacing(3),
     },
+    centerButton: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    container: {
+        display: 'flex',
+        flexDirection: 'column',
+    }
 }));
 
-export default function Orders() {
+export default function Contracts() {
     const classes = useStyles();
     return (
-        <React.Fragment>
+        <div className={classes.container}>
             <h1>Contracts</h1>
             <Table size="small">
                 <TableHead>
@@ -56,11 +65,7 @@ export default function Orders() {
                     ))}
                 </TableBody>
             </Table>
-            <div className={classes.seeMore}>
-                <Link color="primary" href="javascript:;">
-                    View All Contracts
-                </Link>
-            </div>
-        </React.Fragment>
+            <ViewMoreButton className={classes.centerButton} name="All Contracts"/>
+        </div>
     );
 }

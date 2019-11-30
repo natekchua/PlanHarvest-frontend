@@ -2,14 +2,13 @@
 /** @jsx jsx */
 
 import React from 'react';
-import Link from '@material-ui/core/Link';
-import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import { css, jsx } from '@emotion/core'
+import { css, jsx } from '@emotion/core';
+import ViewMoreButton from '../viewMoreButton';
 
 // Generate Order Data
 function createProduct(prodID, fieldID, type, grade, dateStored) {
@@ -29,19 +28,14 @@ const rows = [
     createProduct(2, 'A', 'Barley', '80', 'January 10th, 2020'),
 ];
 
-const useStyles = makeStyles(theme => ({
-    seeMore: {
-        marginTop: theme.spacing(3),
-    },
-}));
-
 const cardContainer = css`
-  height: 100vh;
+  height: 100%;
   background: #fff;
+  display: flex;
+  flex-direction: column;
 `;
 
 export default function InventoryCard() {
-    const classes = useStyles();
     return (
         <div css={cardContainer}>
             <h1>Inventory</h1>
@@ -67,11 +61,7 @@ export default function InventoryCard() {
                     ))}
                 </TableBody>
             </Table>
-            <div className={classes.seeMore}>
-                <Link color="primary" href="javascript:;">
-                    View Entire Inventory
-                </Link>
-            </div>
+            <ViewMoreButton name="Entire Inventory"/>
         </div>
-    );
+);
 }

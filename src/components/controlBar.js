@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import React from 'react';
-import '../components/controlBar.css';
 import { css, jsx } from '@emotion/core'
 import SearchBar from '@material-ui/core/TextField';
 
