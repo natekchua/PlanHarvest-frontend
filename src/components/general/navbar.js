@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Logo from './logo';
 
 export default class NavBar extends Component {
     render() {
         return (
             <nav id="navbar">
-                <h1 className= "logo">
-                    <span className="text-primary">
-                        PlanHarvest
-                    </span>
-                </h1>
+                <Logo />
                 <ul>
                     <li><Link to="home">Home</Link></li>
                     <li><Link to="">About</Link></li>

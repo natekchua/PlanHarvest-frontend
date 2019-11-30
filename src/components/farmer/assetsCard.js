@@ -2,7 +2,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import ViewMoreButton from '../viewMoreButton';
+import ViewMoreButton from '../general/viewMoreButton';
 
 const useStyles = makeStyles({
     depositContext: {
@@ -16,7 +16,7 @@ const useStyles = makeStyles({
     },
 });
 
-export default function Assets() {
+export default function AssetsCard() {
     const classes = useStyles();
     return (
         <React.Fragment>
@@ -29,7 +29,6 @@ export default function Assets() {
                 <p>Bins: 5</p>
                 <p>Sheds: 8</p>
             </Typography>
-            <ViewMoreButton className={classes.centerButton} name="All Assets" />
         </React.Fragment>
     );
 }

@@ -7,7 +7,6 @@
 body{
     background: url('../../img/login1.jpg') center center/cover;
     font-family: Roboto, sans-serif;
-    color: white;
     line-height: 1.8;
     height: 100%;
     position: relative;
@@ -15,6 +14,11 @@ body{
 
 a{
     text-decoration: none;
+}
+
+h1{
+    padding-left: 1rem;
+    /*padding: 0.3rem;*/
 }
 
 #container{

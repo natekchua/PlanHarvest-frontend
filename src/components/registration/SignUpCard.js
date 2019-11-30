@@ -1,13 +1,14 @@
 import React from 'react';
 
 import '../../pages/css/registrationStyle.css';
+import Logo from "../general/logo";
 
 export default class SignUpCard extends React.Component{
     render = () => {
         return (
             <div id="container">
                 <div className="form-wrap">
-                    <h1>PlanHarvest</h1>
+                    <Logo />
                     <p>Sign Up! It's free and only takes a minute</p>
                     <form>
                         <div className="form-group">

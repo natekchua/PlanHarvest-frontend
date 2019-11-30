@@ -8,7 +8,6 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import { css, jsx } from '@emotion/core';
-import ViewMoreButton from '../viewMoreButton';
 
 // Generate Order Data
 function createProduct(prodID, fieldID, type, grade, dateStored) {
@@ -29,7 +28,7 @@ const rows = [
 ];
 
 const cardContainer = css`
-  height: 100%;
+  height: 100vh;
   background: #fff;
   display: flex;
   flex-direction: column;
@@ -61,7 +60,6 @@ export default function InventoryCard() {
                     ))}
                 </TableBody>
             </Table>
-            <ViewMoreButton name="Entire Inventory"/>
         </div>
 );
 }

@@ -18,8 +18,10 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import { mainListItems } from './listItems';
 import Inventory from './inventoryCard';
-import Contracts from './contracts';
-import Assets from './assets';
+import Contracts from './contractsCard';
+import Assets from './assetsCard';
+import ViewMoreButton from "../general/viewMoreButton";
+import {jsx} from "@emotion/core";
 
 const drawerWidth = 180;
 
@@ -163,16 +165,19 @@ export default function Dashboard() {
                         <Grid item xs={3} md={3} lg={3}>
                             <Paper className={fixedHeightPaper}>
                                 <Assets />
+                                <ViewMoreButton name="All Assets"/>
                             </Paper>
                         </Grid>
                         <Grid item xs={12} md={8} lg={8}>
                             <Paper className={fixedHeightPaper}>
                                 <Inventory />
+                                <ViewMoreButton name="Entire Inventory"/>
                             </Paper>
                         </Grid>
                         <Grid item xs={12} md={11} lg={11}>
                             <Paper className={fixedHeightPaper}>
                                 <Contracts />
+                                <ViewMoreButton name="All Contracts"/>
                             </Paper>
                         </Grid>
                     </Grid>
