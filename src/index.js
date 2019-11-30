@@ -9,6 +9,7 @@ import LogIn from './components/registration/LogInCard';
 import FDashBoard from './components/farmer/farmer-dashboard';
 import FInventory from './components/farmer/inventory';
 import FContracts from './components/farmer/contracts';
+import FAssets from './components/farmer/assets';
 
 export default class App extends React.Component {
     render = () => {
@@ -22,6 +23,7 @@ export default class App extends React.Component {
                     <Route exact path="/farmer-dashboard" component={() => <FDashBoard />} />
                     <Route exact path="/farmer-inventory" component={() => <FInventory />} />
                     <Route exact path="/farmer-contracts" component={() => <FContracts />} />
+                    <Route exact path="/farmer-assets" component={() => <FAssets />} />
                 </Switch>
             </Router>
         );
