@@ -165,19 +165,19 @@ export default function Dashboard() {
                         <Grid item xs={3} md={3} lg={3}>
                             <Paper className={fixedHeightPaper}>
                                 <Assets />
-                                <PHButton message="View All Assets"/>
+                                <PHButton routeTo="farmer-assets" message="View All Assets"/>
                             </Paper>
                         </Grid>
                         <Grid item xs={12} md={8} lg={8}>
                             <Paper className={fixedHeightPaper}>
                                 <Inventory />
-                                <PHButton message="View Entire Inventory"/>
+                                <PHButton routeTo="farmer-inventory" message="View Entire Inventory"/>
                             </Paper>
                         </Grid>
                         <Grid item xs={12} md={11} lg={11}>
                             <Paper className={fixedHeightPaper}>
                                 <Contracts />
-                                <PHButton message="View All Contracts"/>
+                                <PHButton routeTo="farmer-contracts" message="View All Contracts"/>
                             </Paper>
                         </Grid>
                     </Grid>

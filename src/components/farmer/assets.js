@@ -37,7 +37,7 @@ export default function Assets() {
                                    location="Main Headquarters"
                                    bins="8"
                                    sheds="8"/>
-                </Grid>
+                    </Grid>
                 </Grid>
             </Container>
         </Layout>

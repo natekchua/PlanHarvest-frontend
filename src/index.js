@@ -11,6 +11,7 @@ import FInventory from './components/farmer/inventory';
 import FContracts from './components/farmer/contracts';
 import FAssets from './components/farmer/assets';
 import FFields from './components/farmer/field';
+import FManager from './components/farmer/fieldSummary';
 
 export default class App extends React.Component {
     render = () => {
@@ -26,6 +27,7 @@ export default class App extends React.Component {
                     <Route exact path="/farmer-contracts" component={() => <FContracts />} />
                     <Route exact path="/farmer-assets" component={() => <FAssets />} />
                     <Route exact path="/farmer-fields" component={() => <FFields />} />
+                    <Route exact path="/farmer-field-manager" component={() => <FManager />} />
 
                 </Switch>
             </Router>

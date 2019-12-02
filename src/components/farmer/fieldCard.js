@@ -60,8 +60,7 @@ export default function FieldCard(props) {
                         </Typography>
                     </CardContent>
                     <CardActions className={classes.centerBtn}>
-                        {/*<PHButton message="View" />*/}
-                        <PHButton message="Manage" />
+                        <PHButton message="Manage" routeTo="farmer-field-manager"/>
                     </CardActions>
                 </Card>
             </Container>

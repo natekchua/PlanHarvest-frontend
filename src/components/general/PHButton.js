@@ -3,6 +3,7 @@ import React from 'react';
 import Link from "@material-ui/core/Link";
 import { css, jsx } from '@emotion/core';
 import Button from "@material-ui/core/Button";
+import ListItem from "@material-ui/core/ListItem";
 
 // Styles
 const viewMore = css`
@@ -21,10 +22,10 @@ const linkStyle = css`
 
 export default function PHButton(props) {
     return (
-        <Button css={viewMore}>
-        <Link css={linkStyle} color="primary" href="javascript:;">
-            {props.message}
-        </Link>
-    </Button>
+            <Button css={viewMore}>
+                <Link to={props.routeTo} css={linkStyle} color="primary" href="../">
+                    {props.message}
+                </Link>
+            </Button>
     );
 }
