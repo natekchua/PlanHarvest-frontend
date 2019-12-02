@@ -19,11 +19,11 @@ const linkStyle = css`
   text-transform: none;
 `;
 
-export default function viewMoreButton(props) {
+export default function PHButton(props) {
     return (
         <Button css={viewMore}>
         <Link css={linkStyle} color="primary" href="javascript:;">
-            View {props.name}
+            {props.message}
         </Link>
     </Button>
     );

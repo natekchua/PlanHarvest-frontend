@@ -5,15 +5,8 @@ import React from 'react';
 import Layout from "../general/layout";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
-import Field from "./field";
+import FieldCard from "./fieldCard";
 import {css, jsx} from "@emotion/core";
-
-const gridItemStyle = css`
-     background: #dbf5d1;
-     padding: 1rem;
-     margin: 1rem;
-`;
 
 export default function Assets() {
     return (
@@ -23,23 +16,28 @@ export default function Assets() {
                     container
                     direction="row"
                     justify="space-evenly"
+                    justifyContent="center"
                     alignItems="center"
                     >
-                    <Grid item xs={3} md={3} lg={3}>
-                        <Paper css={gridItemStyle}>
-                            <Field name="A"/>
-                        </Paper>
+                    <Grid item xs={4} md={4} lg={4}>
+                        <FieldCard photo="https://unsplash.com/photos/Zm2n2O7Fph4"
+                                   name="A"
+                                   location="South Point"
+                                   bins="5"
+                                   sheds="3"/>
                     </Grid>
-                    <Grid item xs={3} md={3} lg={3}>
-                        <Paper css={gridItemStyle}>
-                            <Field name="B"/>
-                        </Paper>
+                    <Grid item xs={4} md={4} lg={4}>
+                        <FieldCard name="B"
+                                   location="North End"
+                                   bins="2"
+                                   sheds="10"/>
                     </Grid>
-                    <Grid item xs={3} md={3} lg={3}>
-                        <Paper css={gridItemStyle}>
-                            <Field name="C"/>
-                        </Paper>
-                    </Grid>
+                    <Grid item xs={4} md={4} lg={4}>
+                        <FieldCard name="C"
+                                   location="Main Headquarters"
+                                   bins="8"
+                                   sheds="8"/>
+                </Grid>
                 </Grid>
             </Container>
         </Layout>
