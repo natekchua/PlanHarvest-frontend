@@ -29,6 +29,11 @@ const useStyles = makeStyles(theme => ({
     cardContent: {
         flexGrow: 1,
     },
+    centerBtn: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
+    }
 }));
 
 
@@ -54,8 +59,8 @@ export default function FieldCard(props) {
                             Sheds: {props.sheds}<br/>
                         </Typography>
                     </CardContent>
-                    <CardActions>
-                        <PHButton message="View" />
+                    <CardActions className={classes.centerBtn}>
+                        {/*<PHButton message="View" />*/}
                         <PHButton message="Manage" />
                     </CardActions>
                 </Card>

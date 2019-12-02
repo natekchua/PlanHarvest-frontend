@@ -7,12 +7,12 @@ import ControlBar from "../general/controlBar";
 import Divider from "@material-ui/core/Divider";
 import ContractsContent from "./contractsCard";
 
-export default function Field(){
+export default function Shed(){
     return (
         <Layout>
             <ControlBar name="inventoryBar" forUser="farmer" />
-                <Divider />
-                <ContractsContent />
+            <Divider />
+            <ContractsContent />
         </Layout>
     );
 }
