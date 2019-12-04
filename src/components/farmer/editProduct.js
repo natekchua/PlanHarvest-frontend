@@ -1,15 +1,9 @@
 /** @jsx jsx */
 
 import React from 'react';
-import Form from "react-bootstrap/Form";
-import Col from "react-bootstrap/Col";
-import Button from "@material-ui/core/Button";
-import Container from "@material-ui/core/Container";
 import { css, jsx } from "@emotion/core";
-import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
-import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
 import withStyles from "@material-ui/core/styles/withStyles";
 

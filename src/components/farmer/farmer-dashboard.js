@@ -176,7 +176,7 @@ export default function Dashboard() {
                         </Grid>
                         <Grid item xs={12} md={11} lg={11}>
                             <Paper className={fixedHeightPaper}>
-                                <Contracts />
+                                <Contracts side="farmer"/>
                                 <PHButton routeTo="farmer-contracts" message="View All Contracts"/>
                             </Paper>
                         </Grid>

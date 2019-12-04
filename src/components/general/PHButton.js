@@ -3,7 +3,6 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import { css, jsx } from '@emotion/core';
 import Button from "@material-ui/core/Button";
-import ListItem from "@material-ui/core/ListItem";
 
 // Styles
 const viewMore = css`
