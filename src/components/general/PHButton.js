@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import React from 'react';
-import Link from "@material-ui/core/Link";
+import {Link} from "react-router-dom";
 import { css, jsx } from '@emotion/core';
 import Button from "@material-ui/core/Button";
 import ListItem from "@material-ui/core/ListItem";
@@ -23,7 +23,7 @@ const linkStyle = css`
 export default function PHButton(props) {
     return (
             <Button css={viewMore}>
-                <Link to={props.routeTo} css={linkStyle} color="primary" href="../">
+                <Link to={props.routeTo} css={linkStyle} color="primary">
                     {props.message}
                 </Link>
             </Button>
