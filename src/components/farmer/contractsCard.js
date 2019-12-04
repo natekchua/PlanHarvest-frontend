@@ -7,10 +7,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import {css, jsx} from "@emotion/core";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
-import withStyles from "@material-ui/core/styles/withStyles";
-import {green} from "@material-ui/core/colors";
+import CompleteButton from "./completeButton";
 
 // Generate Sample Contract Data
 function createContract(id, custID, contractID, farmID, numLoads, startDate, deliveryByDate, outcome) {
@@ -33,27 +30,7 @@ const cardContainer = css`
   border-radius: 5px;
 `;
 
-const GreenCheckbox = withStyles({
-    root: {
-        color: green[400],
-        '&$checked': {
-            color: green[600],
-        },
-    },
-    checked: {},
-})(props => <Checkbox color="default" {...props} />);
-
-
-
 export default function ContractsCard(props) {
-    const [state, setState] = React.useState({
-        checkedG: true,
-    });
-
-    const handleChange = name => event => {
-        setState({ ...state, [name]: event.target.checked });
-    };
-
     return (
         <div css={cardContainer}>
             <h1>Contracts</h1>
@@ -80,16 +57,7 @@ export default function ContractsCard(props) {
                             <TableCell>{row.deliveryByDate}</TableCell>
                             {props.side === "farmer" ? (
                                 <TableCell align="right">
-                                    <FormControlLabel
-                                        control={
-                                            <GreenCheckbox
-                                                checked={state.checkedG}
-                                                onChange={handleChange('checkedG')}
-                                                value="checkedG"
-                                            />
-                                        }
-                                        label=""
-                                    />
+                                    <CompleteButton />
                                 </TableCell>
                             ) : (
                                 <TableCell align="right">{row.outcome}</TableCell>
