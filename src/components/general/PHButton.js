@@ -21,10 +21,10 @@ const linkStyle = css`
 
 export default function PHButton(props) {
     return (
-            <Button css={viewMore}>
-                <Link to={props.routeTo} css={linkStyle} color="primary">
-                    {props.message}
-                </Link>
-            </Button>
+        <Button css={viewMore}>
+            <Link to={props.routeTo} css={linkStyle} color="primary">
+                {props.message}
+            </Link>
+        </Button>
     );
 }

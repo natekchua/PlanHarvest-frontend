@@ -2,6 +2,7 @@
 import React from 'react';
 import { css, jsx } from '@emotion/core'
 import SearchBar from '@material-ui/core/TextField';
+import {Link} from "react-router-dom";
 
 //Styles
 
@@ -13,6 +14,12 @@ const buttonStyle = css`
     margin: 0.5rem;
     border: none;
     border-radius: 5px;
+    cursor: pointer;
+`;
+
+const linkStyle = css`
+  text-decoration: none;
+  color: white;
 `;
 
 const navbar = css`
@@ -31,11 +38,27 @@ export default function ControlBar(props){
     let buttons;
 
     if (props.forUser === "farmer") {
-        buttons = (
-            <div>
-                <button css={buttonStyle}>Add</button>
-                <button css={buttonStyle}>Remove</button>
-            </div>);
+        if(props.type === "product"){
+            buttons = (
+                <div>
+                    <Link css={linkStyle} to="edit-product">
+                        <button css={buttonStyle}>
+                            Add
+                        </button>
+                    </Link>
+                </div>);
+        }
+        else if(props.type === "contract"){
+            buttons = (
+                <div>
+                    <Link css={linkStyle} to="edit-contract">
+                        <button css={buttonStyle}>
+                            Add
+                        </button>
+                    </Link>
+                </div>);
+        }
+
     } else if (props.forUser === "contractor") {
         buttons = (
             <div>

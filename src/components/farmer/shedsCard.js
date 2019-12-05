@@ -8,6 +8,8 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import { css, jsx } from '@emotion/core';
+import IconButton from "@material-ui/core/IconButton";
+import DeleteIcon from "@material-ui/icons/Delete";
 
 // Generate Order Data
 function createShedProduct(prodID, type, shedID) {
@@ -37,6 +39,7 @@ export default function ShedsCard() {
                         <TableCell>Product ID</TableCell>
                         <TableCell>Type</TableCell>
                         <TableCell align="right">ShedID</TableCell>
+                        <TableCell />
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -45,6 +48,11 @@ export default function ShedsCard() {
                             <TableCell>{row.prodID}</TableCell>
                             <TableCell>{row.type}</TableCell>
                             <TableCell align="right">{row.shedID}</TableCell>
+                            <TableCell>
+                                <IconButton aria-label="delete">
+                                    <DeleteIcon />
+                                </IconButton>
+                            </TableCell>
                         </TableRow>
                     ))}
                 </TableBody>

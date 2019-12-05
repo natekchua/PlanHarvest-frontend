@@ -10,6 +10,8 @@ import TableRow from '@material-ui/core/TableRow';
 import { css, jsx } from '@emotion/core';
 import PHButton from "../general/PHButton";
 import Button from "@material-ui/core/Button";
+import IconButton from "@material-ui/core/IconButton";
+import DeleteIcon from "@material-ui/icons/Delete";
 
 // Generate Order Data
 function createProduct(prodID, fieldID, type, grade, dateStored) {
@@ -47,6 +49,7 @@ export default function BinsCard() {
                         <TableCell>Type</TableCell>
                         <TableCell>Grade</TableCell>
                         <TableCell align="right">Date Stored</TableCell>
+                        <TableCell />
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -57,8 +60,11 @@ export default function BinsCard() {
                             <TableCell>{row.type}</TableCell>
                             <TableCell>{row.grade}</TableCell>
                             <TableCell align="right">{row.dateStored}</TableCell>
-                            <TableCell><Button /></TableCell>
-
+                            <TableCell>
+                                <IconButton aria-label="delete">
+                                    <DeleteIcon />
+                                </IconButton>
+                            </TableCell>
                         </TableRow>
                     ))}
                 </TableBody>

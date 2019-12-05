@@ -9,7 +9,7 @@ export default function Inventory() {
     return (
         <Layout>
             <>
-                <ControlBar name="inventoryBar" forUser="farmer" />
+                <ControlBar name="inventoryBar" forUser="farmer" type="product"/>
                 <Divider />
                 <InventoryContent />
             </>

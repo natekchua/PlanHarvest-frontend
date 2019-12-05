@@ -13,6 +13,8 @@ import FAssets from './components/farmer/assets';
 import FFields from './components/farmer/field';
 import FManager from './components/farmer/fieldSummary';
 import EditProduct from "./components/farmer/editProduct";
+import EditContract from "./components/contractor/createContract";
+
 import CDashboard from "./components/contractor/contractor-dashboard";
 
 export default class App extends React.Component {
@@ -31,6 +33,7 @@ export default class App extends React.Component {
                     <Route exact path="/farmer-fields" component={() => <FFields />} />
                     <Route exact path="/farmer-field-manager" component={() => <FManager />} />
                     <Route exact path="/edit-product" component={() => <EditProduct />} />
+                    <Route exact path="/edit-contract" component={() => <EditContract />} />
 
                     <Route exact path="/contractor-dashboard" component={() => <CDashboard />} />
                 </Switch>

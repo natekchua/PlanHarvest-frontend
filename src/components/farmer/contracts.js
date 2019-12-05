@@ -9,7 +9,7 @@ export default function Contracts() {
     return (
         <Layout>
             <>
-                <ControlBar name="inventoryBar" forUser="farmer" />
+                <ControlBar name="inventoryBar" forUser="farmer" type="contract"/>
                 <Divider />
                 <ContractsContent side="farmer"/>
             </>

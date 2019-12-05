@@ -8,6 +8,8 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import {css, jsx} from "@emotion/core";
 import CompleteButton from "./completeButton";
+import IconButton from "@material-ui/core/IconButton";
+import DeleteIcon from '@material-ui/icons/Delete';
 
 // Generate Sample Contract Data
 function createContract(id, custID, contractID, farmID, numLoads, startDate, deliveryByDate, outcome) {
@@ -44,6 +46,7 @@ export default function ContractsCard(props) {
                         <TableCell>Start Date</TableCell>
                         <TableCell>Expected Delivery Date</TableCell>
                         <TableCell align="right">Status</TableCell>
+                        <TableCell/>
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -63,6 +66,12 @@ export default function ContractsCard(props) {
                                 <TableCell align="right">{row.outcome}</TableCell>
                             )
                             }
+                            <TableCell>
+                                <IconButton aria-label="delete">
+                                    <DeleteIcon />
+                                </IconButton>
+                            </TableCell>
+
                         </TableRow>
                     ))}
                 </TableBody>

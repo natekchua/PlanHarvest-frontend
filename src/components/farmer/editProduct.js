@@ -30,49 +30,6 @@ const formGroupLabel = css`
     color: #666;
 `;
 
-const formGroupInput = css`
-    width: 100%;
-    border: #ddd 1px solid;
-    border-radius: 5px;
-    display: block;
-    padding: 10px;
-`;
-
-// const formWrapButton = css`
-//     width: 100%;
-//     display: block;
-//     background-color: #49c1a2;
-//     padding: 10px;
-//     margin-top: 20px;
-//     color: white;
-//     border: none;
-//     border-radius: 5px;
-//     cursor: pointer;
-// `;
-//
-//
-// .form-wrap button:hover {
-//     /*
-//       Hover background color for button is #37a08e
-//     */
-//     background-color: #37a08e;
-
-
-const bottomText = css`
-    font-size: 13px;
-    margin-top: 20px;
-`;
-
-const state = {
-    startDate: new Date()
-};
-
-const handleChange = date => {
-    this.setState({
-        startDate: date
-    });
-};
-
 const PrettoSlider = withStyles({
     root: {
         color: '#52af77',
@@ -126,7 +83,6 @@ export default function EditProduct(){
                         <div />
                         <PrettoSlider valueLabelDisplay="auto" aria-label="pretto slider" defaultValue={20} />
                         <div />
-                        {/*<input css={formGroupInput} type="text" name="lastName" id="last-name"/>*/}
                     </div>
                     <div css={formGroup}>
                         <label css={formGroupLabel} htmlFor="location">Location</label>

@@ -21,7 +21,6 @@ import Inventory from './inventoryCard';
 import Contracts from './contractsCard';
 import Assets from './assetsCard';
 import PHButton from "../general/PHButton";
-import {jsx} from "@emotion/core";
 
 const drawerWidth = 180;
 

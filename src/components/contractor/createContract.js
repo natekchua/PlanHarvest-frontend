@@ -20,6 +20,13 @@ const container = css`
     border-radius: 5px;
 `;
 
+const formWrap = css`
+    background: white;
+    padding: 15px 25px;
+    color: #333;
+    text-align: center;
+`;
+
 const formGroup = css`
     margin-top: 15px;
 `;
@@ -62,6 +69,7 @@ const PrettoSlider = withStyles({
 export default function CreateContract(){
     return (
         <div css={container}>
+            <div css={formWrap}>
             <h1>Create Contract</h1>
             <form>
                 <div css={formGroup}>
@@ -89,7 +97,7 @@ export default function CreateContract(){
                     </select>
                 </div>
                 <div css={formGroup}>
-                    <label css={formGroupLabel} htmlFor="farm-to-send">Farm ID</label>
+                    <label css={formGroupLabel} htmlFor="farm-to-send" required>Farm ID</label>
                     <input type="text" name="farm" id="farm"/>
                 </div>
                 <div css={formGroup}>
@@ -111,6 +119,8 @@ export default function CreateContract(){
                     <button type="submit" className="btn">Send to Farmer</button>
                 </div>
             </form>
+            </div>
+
         </div>
     );
 }

@@ -10,7 +10,7 @@ export default function fieldSummary() {
     return (
         <Layout>
             <>
-                <ControlBar name="inventoryBar" forUser="farmer" />
+                <ControlBar name="inventoryBar" forUser="farmer" type="product"/>
                 <Divider />
                 <BinsContent />
                 <ShedsContent />

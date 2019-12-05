@@ -1,5 +1,4 @@
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-import {jsx} from "@emotion/core";
 import React from "react";
 import withStyles from "@material-ui/core/styles/withStyles";
 import {green} from "@material-ui/core/colors";
@@ -17,7 +16,7 @@ const GreenCheckbox = withStyles({
 })(props => <Checkbox color="default" {...props} />);
 
 
-export default function ContractsCard(props) {
+export default function ContractsCard() {
     const [state, setState] = React.useState({
         checkedG: true,
     });

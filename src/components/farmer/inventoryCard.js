@@ -8,6 +8,8 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import { css, jsx } from '@emotion/core';
+import IconButton from "@material-ui/core/IconButton";
+import DeleteIcon from "@material-ui/icons/Delete";
 
 // Generate Order Data
 function createProduct(prodID, fieldID, type, grade, dateStored) {
@@ -46,6 +48,7 @@ export default function InventoryCard() {
                         <TableCell>Type</TableCell>
                         <TableCell>Grade</TableCell>
                         <TableCell align="right">Date Stored</TableCell>
+                        <TableCell />
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -56,6 +59,11 @@ export default function InventoryCard() {
                             <TableCell>{row.type}</TableCell>
                             <TableCell>{row.grade}</TableCell>
                             <TableCell align="right">{row.dateStored}</TableCell>
+                            <TableCell>
+                                <IconButton aria-label="delete">
+                                    <DeleteIcon />
+                                </IconButton>
+                            </TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
