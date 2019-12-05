@@ -13,21 +13,25 @@ const useStyles = makeStyles({
         justifyContent: 'center',
         textAlign: 'center',
     },
+    centerContent: {
+        display: 'flex',
+        justifyContent: 'center',
+        textAlign: 'center',
+    }
 });
 
 export default function AssetsCard() {
     const classes = useStyles();
     return (
-        <React.Fragment>
-            <h1>My Farm</h1>
-            <Typography component="p" variant="h6">
-                Field A
-            </Typography>
-            <Typography color="textSecondary" className={classes.depositContext}>
-                Located on South End
-                <p>Bins: 5</p>
-                <p>Sheds: 8</p>
-            </Typography>
-        </React.Fragment>
+        <>
+            <h1 className={classes.centerContent}>My Farm</h1>
+                <div className={classes.centerContent}>
+                    <Typography component="p" variant="h6">
+                        Fields: 3<br/>
+                        Bins: 6<br/>
+                        Sheds: 8<br/>
+                    </Typography>
+                </div>
+        </>
     );
 }

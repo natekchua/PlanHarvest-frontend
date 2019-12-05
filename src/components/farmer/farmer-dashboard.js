@@ -17,8 +17,8 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import { mainListItems } from './listItems';
-import Inventory from './inventoryCard';
-import Contracts from './contractsCard';
+import InventorySummary from './inventorySummary';
+import ContractsSummary from './contractsSummary';
 import Assets from './assetsCard';
 import PHButton from "../general/PHButton";
 
@@ -169,13 +169,13 @@ export default function Dashboard() {
                         </Grid>
                         <Grid item xs={12} md={8} lg={8}>
                             <Paper className={fixedHeightPaper}>
-                                <Inventory />
+                                <InventorySummary />
                                 <PHButton routeTo="farmer-inventory" message="View Entire Inventory"/>
                             </Paper>
                         </Grid>
                         <Grid item xs={12} md={11} lg={11}>
                             <Paper className={fixedHeightPaper}>
-                                <Contracts side="farmer"/>
+                                <ContractsSummary side="farmer"/>
                                 <PHButton routeTo="farmer-contracts" message="View All Contracts"/>
                             </Paper>
                         </Grid>
