@@ -169,7 +169,7 @@ export default function Dashboard(props) {
                         </Grid>
                         <Grid item xs={12} md={8} lg={8}>
                             <Paper className={fixedHeightPaper}>
-                                <InventorySummary />
+                                <InventorySummary farmerID={props.getID()}/>
                                 <PHButton routeTo="farmer-inventory" message="View Entire Inventory"/>
                             </Paper>
                         </Grid>

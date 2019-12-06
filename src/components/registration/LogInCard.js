@@ -32,7 +32,7 @@ export default class LogInCard extends React.Component{
                     this.props.history.push("/farmer-dashboard")
                 } else {
                     this.props.setCustomerID(this.state.id)
-                    window.location = "/contractor-dashboard"
+                    this.props.history.push("/contractor-dashboard")
                 }
             } else {
                 this.setState({
@@ -66,8 +66,8 @@ export default class LogInCard extends React.Component{
                                 <input type="password" name="password" id="password" onChange={this.handleChange}/>
                             </div>
                         </form>
-                        <a onClick={this.onClick} type="submit" className="btn">Log In</a>
                     </div>
+                    <a onClick={this.onClick} type="submit" className="btn">Log In</a>
                 </div>
             </Layout>
         );

@@ -117,7 +117,7 @@ export default class CreateContract extends React.Component {
                 numLoads: parseInt(this.state.numLoads),
                 grade: parseInt(this.state.grade),
                 farmID: parseInt(this.state.farmID),
-                deliveryDate: this.state.deliveryDate,
+                deliverByDate: this.state.deliveryDate,
                 customerID: this.props.id
             })
         }).then(response => console.log(response))

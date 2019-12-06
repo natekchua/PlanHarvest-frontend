@@ -101,7 +101,7 @@ export default class AddBale extends React.Component{
                     storageID:  this.state.storageID,
                     grade: this.state.grade,
                 })
-            }).then(response => console.log(response))
+            }).then(response => this.props.history.push("/farmer-dashboard"))
             .catch(err => console.log(err))
         }
     }
@@ -114,14 +114,12 @@ export default class AddBale extends React.Component{
                 <form>
                     <label css={formGroupLabel} htmlFor="product-type" onChange={this.onChange}>Product Type</label>
                         <select>
-                            <option value="straw">Straw</option>
+                            <option value="straw">Straw </option>
                             <option value="hay">Hay</option>
                         </select>
                     <div css={formGroup}>
-                        <label css={formGroupLabel} htmlFor="grade">Grade</label>
-                        <div />
-                        <PrettoSlider valueLabelDisplay="auto" aria-label="pretto slider" name="grade" defaultValue={0} max={3} onChange={this.handleChange}/>
-                        <div />
+                        <label htmlFor="Field ID">Grade </label>
+                        <input  name="grade" id="grade" onChange={this.handleChange}/>
                     </div>
                     <div css={formGroup}>
                         <label htmlFor="Field ID">Field ID </label>

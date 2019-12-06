@@ -69,7 +69,6 @@ export default class AddBin extends React.Component{
         this.state = {
             fieldID: null,
             location: null,
-            type: null
         }
     }
 
@@ -94,9 +93,8 @@ export default class AddBin extends React.Component{
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                type: this.state.type,
-                fieldID: this.state.fieldID,
-                location: this.state.location
+                location: this.state.location,
+                fieldID: this.state.fieldID
             })
         }).then(response => this.props.history.push("/farmer-dashboard"))
         .catch(err => console.log(err))
@@ -108,15 +106,12 @@ export default class AddBin extends React.Component{
         <div css={container}>
             <div css={formWrap}>
                 <form>
-                    <label css={formGroupLabel} htmlFor="product-type" >Product Type</label>
-                    <input  name="type" id="type" onChange={this.handleChange}/>
-
                     <div css={formGroup}>
                         <label htmlFor="Field ID">Field ID </label>
                         <input  name="fieldID" id="fieldID" onChange={this.handleChange}/>
                     </div>
                     <div css={formGroup}>
-                        <label htmlFor="location">Location</label>
+                        <label htmlFor="location">Location </label>
                         <input  name="location" id="location" onChange={this.handleChange}/>
                     </div>
                 </form>

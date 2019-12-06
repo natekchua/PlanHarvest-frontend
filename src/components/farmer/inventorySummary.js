@@ -40,7 +40,7 @@ export default class InventorySummary extends React.Component {
     }
 
     fetchData = () => {
-        fetch(IP + '/farmer/inventory/inventorySummary/' + this.props.id)
+        fetch(IP + 'farmer/inventory/inventorySummary/' + this.props.id)
         .then(response => {
             response.json().then(values => {
                 for (var value in values) {

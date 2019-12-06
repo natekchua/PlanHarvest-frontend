@@ -118,10 +118,8 @@ export default class AddWheat extends React.Component{
                 <form>
                     <label css={formGroupLabel} htmlFor="product-type" onChange={this.onChange}>Product Type</label>
                     <div css={formGroup}>
-                        <label css={formGroupLabel} htmlFor="grade">Grade</label>
-                        <div />
-                        <PrettoSlider valueLabelDisplay="auto" aria-label="pretto slider" name="grade" defaultValue={0} max={3} onChange={this.handleChange}/>
-                        <div />
+                        <label htmlFor="grade">Grade </label>
+                        <input type="fieldID" name="grade" id="grade" onChange={this.handleChange}/>
                     </div>
                     <div css={formGroup}>
                         <label htmlFor="Field ID">Field ID </label>

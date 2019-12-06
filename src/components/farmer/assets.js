@@ -13,9 +13,8 @@ export default class Assets extends React.Component {
 
     constructor(props) {
         super(props)
-        this.state = {
-            grids : []
-        }
+        this.grids = []
+
 
         this.fetchFields()
     }
@@ -25,20 +24,18 @@ export default class Assets extends React.Component {
         .then(response => {
             response.json().then(values => {
                 for(var value of values) {
-                    this.state.grids.push(<Grid item xs={4} md={4} lg={4}>
-                                <FieldCard photo="https://unsplash.com/photos/Zm2n2O7Fph4"
-                               name={value.fieldID}
-                               location={value.location}
-                               bins={value.numBins}
-                               sheds={value.numSheds}/>
-                                </Grid>)
+                    console.log(value)
+                    this.grids.push(value)
+
                 }
+                console.log(this.grids)
             })
         })
         .catch(err => console.log(err))
     }
 
     render =() => {
+        console.log(this.grids)
     return (
         <Layout>
             <Container maxWidth="lg">
@@ -49,7 +46,13 @@ export default class Assets extends React.Component {
                     justifyContent="center"
                     alignItems="center"
                     >
-                    {this.state.grids}
+                        {this.grids.map(grid => (
+                            <FieldCard photo="https://unsplash.com/photos/Zm2n2O7Fph4"
+                           name={grid.fieldid}
+                           location={grid.location}
+                           bins={grid.count}/>
+                        ))}
+                        
                 </Grid>
             </Container>
         </Layout>

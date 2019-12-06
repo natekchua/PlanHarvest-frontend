@@ -56,7 +56,7 @@ export default function FieldCard(props) {
                         <Typography>
                             Location: {props.location}<br/>
                             Bins: {props.bins}<br/>
-                            Sheds: {props.sheds}<br/>
+                            Sheds: Future Update<br/>
                         </Typography>
                     </CardContent>
                     <CardActions className={classes.centerBtn}>

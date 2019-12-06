@@ -17,13 +17,6 @@ function createContract(id, custID, contractID, farmID, numLoads, startDate, del
     return { id, custID, contractID, farmID, numLoads, startDate, deliveryByDate, outcome};
 }
 
-const rows = [
-    createContract(0, '123', '1', '999', '100', 'January 1st, 2020', 'May 21st, 2020', 'pending'),
-    createContract(1, '456', '2', '999', '30', 'December 20th, 2019', 'February 3rd, 2020', 'accepted'),
-    createContract(2, '789', '3', '999', '80', 'January 10th, 2020', 'January 30th, 2020', 'accepted'),
-    createContract(3, '007', '4', '999', '50', 'October 3rd, 2019', 'Decemeber 1st, 2019', 'rejected'),
-    createContract(4, '123', '5', '999', '95', 'March 21st, 2020', 'April 1st, 2020', 'pending'),
-];
 
 const cardContainer = css`
   height: 100vh;
@@ -36,30 +29,26 @@ const cardContainer = css`
 export default class ContractsCard extends React.Component{
     constructor(props) {
         super(props)
-        this.rows = []
+        this.state= {
+            rows: [],
+            delete: null
+        }
+        this.props.type === "farmer" ? this.getFarmerRows() : this.getCustomerRows()
     }
-
-    componentWillMount() {
-        this.rows = this.props.type === "farmer" ? this.getFarmerRows() : this.getCustomerRows()
-    }
-
     getFarmerRows = () => {
        fetch(IP + "contract/getFarmer/" + this.props.id)
        .then(response => {
         response.json().then(values => {
             let i = 0
+            let temp = []
             for (var value of values) {
-                this.rows.push(createContract(
-                    i++,
-                    values.contractid,
-                    values.customerid,
-                    values.farmid,
-                    values.numloads,
-                    values.startdate,
-                    values.deliverBydate,
-                    value.outcome
-                ))
+                value.id = i++
+                temp.push(value)
             }
+
+            this.setState({
+                rows: temp
+            })
         })}) .catch(err => console.log(err))
     }
 
@@ -68,22 +57,33 @@ export default class ContractsCard extends React.Component{
         .then(response => {
             response.json().then(values => {
                 let i = 0
+                let temp = []
                 for (var value of values) {
-                    this.rows.push(createContract(
-                        i++,
-                        values.contractid,
-                        values.customerid,
-                        values.farmid,
-                        values.numloads,
-                        values.startdate,
-                        values.deliverBydate,
-                        value.outcome
-                    ))
+                   
+                    value.id = i++
+                    temp.push(value)
+
                 }
+                this.setState({
+                    rows: temp
+                })
             })
         })
         .catch(err => console.log(err))
 
+    }
+
+    onClick = (event) => {
+        fetch(IP + "contract/delete/" + this.state.delete)
+        .then(response => { console.log(response)
+        })
+        .catch(err => console.log(err))
+    }
+
+    handleChange = (event) => {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
     }
     
     render = () => {
@@ -105,31 +105,33 @@ export default class ContractsCard extends React.Component{
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {rows.map(row => (
+                        {this.state.rows.map(row => (
+                            
                             <TableRow key={row.id}>
-                                <TableCell>{row.contractID}</TableCell>
-                                <TableCell>{row.farmID}</TableCell>
-                                <TableCell>{row.numLoads}</TableCell>
-                                <TableCell>{row.startDate}</TableCell>
-                                <TableCell>{row.deliveryByDate}</TableCell>
+                                <TableCell>{row.contractid}</TableCell>
+                                <TableCell>{row.farmid}</TableCell>
+                                <TableCell>{row.producttype}</TableCell>
+                                <TableCell>{row.numofloads}</TableCell>
+                                <TableCell>{row.startdate}</TableCell>
+                                <TableCell>{row.deliverybydate}</TableCell>
                                 {this.props.type === "farmer" ? (
                                     <TableCell align="right">
                                         <CompleteButton />
                                     </TableCell>
                                 ) : (
-                                    <TableCell align="right">{row.outcome}</TableCell>
+                                    <TableCell align="right">{row.rejected}</TableCell>
                                 )
                                 }
-                                <TableCell>
-                                    <IconButton aria-label="delete">
-                                        <DeleteIcon />
-                                    </IconButton>
-                                </TableCell>
 
                             </TableRow>
                         ))}
                     </TableBody>
                 </Table>
+                <form>
+                        <label htmlFor="Storage ID">Delete a Contract: Enter Contract ID</label>
+                        <input type="" name="delete" id="delete" onChange={this.onHandleChange}/>
+                </form>
+                <button onClick={this.onClick} className="btn">Confirm</button>
             </div>
 
         );

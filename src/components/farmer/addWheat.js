@@ -117,10 +117,8 @@ export default class AddWheat extends React.Component{
                 <form>
                     <label css={formGroupLabel} htmlFor="product-type" onChange={this.onChange}>Product Type</label>
                     <div css={formGroup}>
-                        <label css={formGroupLabel} htmlFor="grade">Grade</label>
-                        <div />
-                        <PrettoSlider valueLabelDisplay="auto" aria-label="pretto slider" name="grade" defaultValue={0} max={3} onChange={this.handleChange}/>
-                        <div />
+                        <label htmlFor="grade">Grade </label>
+                        <input type="fieldID" name="grade" id="grade" onChange={this.handleChange}/>
                     </div>
                     <div css={formGroup}>
                         <label htmlFor="Field ID">Field ID </label>
@@ -131,10 +129,8 @@ export default class AddWheat extends React.Component{
                         <input type="storageID" name="storageID" id="storageID" onChange={this.handleChange}/>
                     </div>
                     <div css={formGroup}>
-                        <label css={formGroupLabel} htmlFor="percentage">Protein Percentage</label>
-                        <div />
-                        <PrettoSlider valueLabelDisplay="auto" aria-label="pretto slider" name="percentage" defaultValue={20} onChange={this.handleChange}/>
-                        <div />
+                        <label htmlFor="percentage">Protein Percentage </label>
+                        <input type="fieldID" name="percentage" id="percentage" onChange={this.handleChange}/>
                     </div>
                     <div css={formGroup}>
                         <label htmlFor="hasBad">Does it have ergot? </label>
