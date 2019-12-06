@@ -78,16 +78,16 @@ export default class EditProduct extends React.Component{
 
         switch(event.target.value) {
             case "bale":
-                this.setState({typeForm: <AddBale ></AddBale>})
+                this.setState({typeForm: <AddBale history={this.props.history} ></AddBale>})
                 break
             case "wheat":
-                this.setState({typeForm: <AddWheat ></AddWheat>})
+                this.setState({typeForm: <AddWheat history={this.props.history}></AddWheat>})
                 break
             case "barley":
-                this.setState({typeForm: <AddBarley ></AddBarley>})
+                this.setState({typeForm: <AddBarley history={this.props.history}></AddBarley>})
                 break
             case "canola":
-                this.setState({typeForm: <AddCanola ></AddCanola>})
+                this.setState({typeForm: <AddCanola history={this.props.history}></AddCanola>})
                 break
         }
     }

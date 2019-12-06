@@ -91,7 +91,6 @@ export default class AddWheat extends React.Component{
     }
 
     submitClick = (event) => {
-        console.log("fetching")
         fetch(IP + "farmer/inventory/addProduct/grain", {
             method: 'POST',
                 headers: {
@@ -107,7 +106,7 @@ export default class AddWheat extends React.Component{
                 hasBad: this.state.hasBad,
                 hasBad2: this.state.hasBad2
             })
-        }).then(response => console.log(response))
+        }).then(response => this.props.history.push("/farmer-dashboard"))
         .catch(err => console.log(err))
     }
 

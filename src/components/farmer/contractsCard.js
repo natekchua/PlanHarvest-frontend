@@ -10,6 +10,7 @@ import {css, jsx} from "@emotion/core";
 import CompleteButton from "./completeButton";
 import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from '@material-ui/icons/Delete';
+import IP from '../../IP'
 
 // Generate Sample Contract Data
 function createContract(id, custID, contractID, farmID, numLoads, startDate, deliveryByDate, outcome) {
@@ -35,14 +36,53 @@ const cardContainer = css`
 export default class ContractsCard extends React.Component{
     constructor(props) {
         super(props)
+        this.rows = []
+    }
+
+    componentWillMount() {
         this.rows = this.props.type === "farmer" ? this.getFarmerRows() : this.getCustomerRows()
     }
 
     getFarmerRows = () => {
-       // fetch("")
+       fetch(IP + "contract/getFarmer/" + this.props.id)
+       .then(response => {
+        response.json().then(values => {
+            let i = 0
+            for (var value of values) {
+                this.rows.push(createContract(
+                    i++,
+                    values.contractid,
+                    values.customerid,
+                    values.farmid,
+                    values.numloads,
+                    values.startdate,
+                    values.deliverBydate,
+                    value.outcome
+                ))
+            }
+        })}) .catch(err => console.log(err))
     }
 
     getCustomerRows =() => {
+        fetch(IP + "contract/getCustomer/" + this.props.id)
+        .then(response => {
+            response.json().then(values => {
+                let i = 0
+                for (var value of values) {
+                    this.rows.push(createContract(
+                        i++,
+                        values.contractid,
+                        values.customerid,
+                        values.farmid,
+                        values.numloads,
+                        values.startdate,
+                        values.deliverBydate,
+                        value.outcome
+                    ))
+                }
+            })
+        })
+        .catch(err => console.log(err))
 
     }
     

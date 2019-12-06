@@ -35,17 +35,33 @@ const navbar = css`
 
 export default function ControlBar(props){
 
+    function addProductOnClick(event) {
+        props.history.push("/edit-product")
+    }
+
+    function addBinClick(event) {
+        props.history.push("/edit-bin")
+    }
+
+    function addShedClick(event) {
+        props.history.push("/edit-shed")
+    }
+
     let buttons;
 
     if (props.forUser === "farmer") {
         if(props.type === "product"){
             buttons = (
                 <div>
-                    <Link css={linkStyle} to="edit-product">
-                        <button css={buttonStyle}>
-                            Add
-                        </button>
-                    </Link>
+                    <button css={buttonStyle} onClick={addProductOnClick}>
+                        Add Product
+                    </button>
+                    <button css={buttonStyle} onClick={addBinClick}>
+                        Add Bin
+                    </button>
+                    <button css={buttonStyle} onClick={addShedClick}>
+                        Add Shed
+                    </button>
                 </div>);
         }
         else if(props.type === "contract"){

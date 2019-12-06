@@ -105,7 +105,7 @@ export default class AddWheat extends React.Component{
                 percentage: '15',
                 hasBad: true
             })
-        }).then(response => console.log(response))
+        }).then(response => this.props.history.push("/farmer-dashboard"))
         .catch(err => console.log(err))
     }
 

@@ -12,6 +12,7 @@ import PHButton from "../general/PHButton";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from "@material-ui/icons/Delete";
+import IP from "../../IP"
 
 // Generate Order Data
 function createProduct(prodID, fieldID, type, grade, dateStored) {
@@ -43,7 +44,8 @@ export default class BinsCard extends React.Component{
     }
 
     componentWillMount () {
-        //fetch("")
+        fetch(IP + "farmer/assets/displayBins" + this.props.id)
+        .then()
     }
 
 

@@ -14,6 +14,8 @@ import FFields from './components/farmer/field';
 import FManager from './components/farmer/fieldSummary';
 import EditProduct from "./components/farmer/editProduct";
 import EditContract from "./components/contractor/createContract";
+import EditBin from "./components/farmer/editBin"
+import EditShed from "./components/farmer/editShed"
 
 import CDashboard from "./components/contractor/contractor-dashboard";
 
@@ -63,6 +65,9 @@ export default class App extends React.Component {
                     <Route exact path="/farmer-field-manager" component={() => <FManager id={this.state.farmerID} history={useHistory()}/>} />
                     <Route exact path="/edit-product" component={() => <EditProduct id={this.state.farmerID} history={useHistory()}/>} />
                     <Route exact path="/edit-contract" component={() => <EditContract id={this.state.customerID} history={useHistory()}/>} />
+                    <Route exact path="/edit-bin" component={() => <EditBin id={this.state.customerID} history={useHistory()}/>} />
+                    <Route exact path="/edit-shed" component={() => <EditShed id={this.state.customerID} history={useHistory()}/>} />
+
                     <Route exact path="/contractor-dashboard" component={() => <CDashboard id={this.state.customerID} history={useHistory()}/>} />
                 </Switch>
             </Router>

@@ -37,7 +37,7 @@ export default class contractDashboard extends React.Component{
                             </Grid>
                             <Grid item xs={4} md={4} lg={4}>
                                 <Paper>
-                                    <CreateContract />
+                                    <CreateContract id={this.state.id}/>
                                 </Paper>
                             </Grid>
                         </Grid>

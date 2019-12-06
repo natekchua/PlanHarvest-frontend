@@ -63,15 +63,13 @@ rail: {
 })(Slider);
 
 
-export default class AddCanola extends React.Component{
+export default class AddBin extends React.Component{
     constructor(props) {
         super(props)
         this.state = {
-            type: "canola",
             fieldID: null,
-            storageID: null,
-            percentage: 20,
-            grade: 0,
+            location: null,
+            type: null
         }
     }
 
@@ -89,19 +87,16 @@ export default class AddCanola extends React.Component{
     }
 
     submitClick = (event) => {
-        console.log(this.state)
-        fetch(IP + "farmer/inventory/addProduct/grain", {
+        fetch(IP + "farmer/assets/addBin", {
             method: 'POST',
                 headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                grainType: 'canola',
+                type: this.state.type,
                 fieldID: this.state.fieldID,
-                storageID: this.state.storageID,
-                grade: this.state.grade,
-                percentage: this.state.percentage
+                location: this.state.location
             })
         }).then(response => this.props.history.push("/farmer-dashboard"))
         .catch(err => console.log(err))
@@ -113,26 +108,16 @@ export default class AddCanola extends React.Component{
         <div css={container}>
             <div css={formWrap}>
                 <form>
-                    <label css={formGroupLabel} htmlFor="product-type" onChange={this.onChange}>Product Type</label>
-                    <div css={formGroup}>
-                        <label css={formGroupLabel} htmlFor="grade">Grade</label>
-                        <div />
-                        <PrettoSlider valueLabelDisplay="auto" aria-label="pretto slider" name="grade" defaultValue={0} max={3} onChange={this.handleChange}/>
-                        <div />
-                    </div>
+                    <label css={formGroupLabel} htmlFor="product-type" >Product Type</label>
+                    <input  name="type" id="type" onChange={this.handleChange}/>
+
                     <div css={formGroup}>
                         <label htmlFor="Field ID">Field ID </label>
-                        <input type="fieldID" name="fieldID" id="fieldID" onChange={this.handleChange}/>
+                        <input  name="fieldID" id="fieldID" onChange={this.handleChange}/>
                     </div>
                     <div css={formGroup}>
-                        <label htmlFor="Storage ID">Storage ID</label>
-                        <input type="storageID" name="storageID" id="storageID" onChange={this.handleChange}/>
-                    </div>
-                    <div css={formGroup}>
-                        <label css={formGroupLabel} htmlFor="percentage">Green Percentage</label>
-                        <div />
-                        <PrettoSlider valueLabelDisplay="auto" aria-label="pretto slider" name="percentage" defaultValue={20} onChange={this.handleChange}/>
-                        <div />
+                        <label htmlFor="location">Location</label>
+                        <input  name="location" id="location" onChange={this.handleChange}/>
                     </div>
                 </form>
                 <button onClick={this.submitClick} className="btn">Confirm</button>

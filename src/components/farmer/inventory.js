@@ -5,13 +5,13 @@ import InventoryContent from "./inventoryCard";
 import ControlBar from "../general/controlBar";
 import Divider from '@material-ui/core/Divider';
 
-export default function Inventory() {
+export default function Inventory(props) {
     return (
         <Layout>
             <>
-                <ControlBar name="inventoryBar" forUser="farmer" type="product"/>
+                <ControlBar name="inventoryBar" forUser="farmer" type="product" history={props.history}/>
                 <Divider />
-                <InventoryContent />
+                <InventoryContent history={props.history}/>
             </>
         </Layout>
     );

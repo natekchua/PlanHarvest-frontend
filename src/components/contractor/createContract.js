@@ -8,6 +8,7 @@ import Slider from "@material-ui/core/Slider";
 import withStyles from "@material-ui/core/styles/withStyles";
 import TextField from "@material-ui/core/TextField";
 import GetDate from "./getDate";
+import IP from "../../IP"
 
 const container = css`
     border-top: #344a72;
@@ -66,7 +67,65 @@ const PrettoSlider = withStyles({
     },
 })(Slider);
 
-export default function CreateContract(){
+export default class CreateContract extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            type: "canola",
+            numLoads: 0,
+            grade: 0,
+            farmID: null,
+            deliveryDate: null,
+            customerID: this.props.id
+        }
+    }
+
+    onChange = (event) => {
+        this.setState({
+            type: event.target.value
+        })
+    }
+
+    handleChange = (event) => {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+    }
+
+    gradeChange = (event) => {
+        this.setState({
+            grade: event.target.value
+        })
+    }
+    numChange = (event) => {
+        this.setState({
+            numLoads: event.target.value
+        })
+    }
+
+
+    submit = (event) => {
+        console.log(this.state)
+        fetch(IP + "contract/request/" + this.state.type, {
+            method: 'POST',
+                headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                type: "canola",
+                numLoads: parseInt(this.state.numLoads),
+                grade: parseInt(this.state.grade),
+                farmID: parseInt(this.state.farmID),
+                deliveryDate: this.state.deliveryDate,
+                customerID: this.props.id
+            })
+        }).then(response => console.log(response))
+        .catch(err => console.log(err))
+
+    }
+
+    render = () => {
     return (
         <div css={container}>
             <div css={formWrap}>
@@ -74,53 +133,48 @@ export default function CreateContract(){
             <form>
                 <div css={formGroup}>
                     <label css={formGroupLabel} htmlFor="product-type">Product Type</label>
-                    <select>
-                        <option value="grain">Canola</option>
+                    <select onChange={this.onChange}>
+                        <option value="canola">Canola</option>
                         <option value="wheat">Wheat</option>
                         <option value="barley">Barley</option>
-                        <option value="canola">Hay</option>
-                        <option value="bale">Straw</option>
+                        <option value="hay">Hay</option>
+                        <option value="bale">Bale</option>
                     </select>
                 </div>
                 <div css={formGroup}>
                     <label css={formGroupLabel} htmlFor="grade">Number of Loads</label>
-                    <div />
-                    <PrettoSlider valueLabelDisplay="auto" aria-label="pretto slider" defaultValue={20} />
-                    <div />
+                    <input type="text" name="numLoads" id="numLoads" onChange={this.handleChange}/>
+
                 </div>
                 <div css={formGroup}>
                     <label css={formGroupLabel} htmlFor="location">Grade</label>
-                    <select>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                    </select>
+                    <input type="text" name="grade" id="grade" onChange={this.handleChange}/>
+
                 </div>
                 <div css={formGroup}>
                     <label css={formGroupLabel} htmlFor="farm-to-send" required>Farm ID</label>
-                    <input type="text" name="farm" id="farm"/>
-                </div>
-                <div css={formGroup}>
-                    <label css={formGroupLabel} htmlFor="storage-type">Contract Start Date</label>
-                    <GetDate />
+                    <input type="text" name="farmID" id="farmID" onChange={this.handleChange}/>
                 </div>
                 <div css={formGroup}>
                     <label css={formGroupLabel} htmlFor="storage-type">Expected Delivery Date</label>
                     <TextField
                         id="date"
                         type="date"
-                        defaultValue="yyyy-mm-dd"
+                        name="deliveryDate"
+                        defaultValue="yyyy-MM-dd"
                         InputLabelProps={{
                             shrink: true,
                         }}
+                        onChange={this.handleChange}
                     />
                 </div>
-                <div css={formGroup}>
-                    <button type="submit" className="btn">Send to Farmer</button>
-                </div>
+                
             </form>
+            <div css={formGroup}>
+                    <button onClick={this.submit} className="btn">Send to Farmer</button>
+                </div>
             </div>
 
         </div>
-    );
+    );}
 }
