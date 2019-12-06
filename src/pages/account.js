@@ -7,7 +7,7 @@ import CustomerSignUpCard from "../components/registration/CustomerSignUpCard";
 export default class Account extends React.Component {
 
     render = () => {
-        let signUp = this.props.type === "farmer" ? <FarmerSignUpCard setFarmerID={this.props.setFarmerID}></FarmerSignUpCard> : <CustomerSignUpCard setCustomerID={this.props.setCustomerID}></CustomerSignUpCard>
+        let signUp = this.props.type === "farmer" ? <FarmerSignUpCard setFarmerID={this.props.setFarmerID} history={this.props.history}></FarmerSignUpCard> : <CustomerSignUpCard setCustomerID={this.props.setCustomerID} history={this.props.history}></CustomerSignUpCard>
 
         return (
             <Layout >

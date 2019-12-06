@@ -42,6 +42,12 @@ export default class BinsCard extends React.Component{
         super(props)
     }
 
+    componentWillMount () {
+        //fetch("")
+    }
+
+
+
     render = () => {
     return (
         <div css={cardContainer}>
