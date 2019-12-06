@@ -11,7 +11,7 @@ export default function Inventory(props) {
             <>
                 <ControlBar name="inventoryBar" forUser="farmer" type="product" history={props.history}/>
                 <Divider />
-                <InventoryContent history={props.history}/>
+                <InventoryContent id={props.id} history={props.history}/>
             </>
         </Layout>
     );

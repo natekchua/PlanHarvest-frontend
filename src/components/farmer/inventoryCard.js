@@ -17,18 +17,18 @@ function createProduct(prodID, fieldID, type, grade, dateStored) {
     return { prodID, fieldID, type, grade, dateStored};
 }
 
-const rows = [
-    createProduct(0, 'A', 'Grain', '400', 'January 1st, 2020'),
-    createProduct(1, 'A', 'Wheat', '30', 'December 20th, 2019'),
-    createProduct(2, 'A', 'Barley', '80', 'January 10th, 2020'),
-    createProduct(2, 'A', 'Barley', '80', 'January 10th, 2020'),
-    createProduct(2, 'A', 'Barley', '80', 'January 10th, 2020'),
-    createProduct(2, 'A', 'Barley', '80', 'January 10th, 2020'),
-    createProduct(2, 'A', 'Barley', '80', 'January 10th, 2020'),
-    createProduct(2, 'A', 'Barley', '80', 'January 10th, 2020'),
-    createProduct(2, 'A', 'Barley', '80', 'January 10th, 2020'),
-    createProduct(2, 'A', 'Barley', '80', 'January 10th, 2020'),
-];
+// const rows = [
+//     createProduct(0, 'A', 'Grain', '400', 'January 1st, 2020'),
+//     createProduct(1, 'A', 'Wheat', '30', 'December 20th, 2019'),
+//     createProduct(2, 'A', 'Barley', '80', 'January 10th, 2020'),
+//     createProduct(2, 'A', 'Barley', '80', 'January 10th, 2020'),
+//     createProduct(2, 'A', 'Barley', '80', 'January 10th, 2020'),
+//     createProduct(2, 'A', 'Barley', '80', 'January 10th, 2020'),
+//     createProduct(2, 'A', 'Barley', '80', 'January 10th, 2020'),
+//     createProduct(2, 'A', 'Barley', '80', 'January 10th, 2020'),
+//     createProduct(2, 'A', 'Barley', '80', 'January 10th, 2020'),
+//     createProduct(2, 'A', 'Barley', '80', 'January 10th, 2020'),
+// ];
 
 const cardContainer = css`
   height: 100vh;
@@ -44,10 +44,12 @@ export default class InventoryCard extends React.Component{
             rows: [],
             delete: null
         }
+        this.getProductTuples()
     }
 
     getProductTuples = () => {
-        fetch(IP + "farmer/inventory/view" + this.props.id)
+        console.log("displaying")
+        fetch(IP + "farmer/inventory/view/" + this.props.id)
             .then(response => {
                 response.json().then(values => {
                     let i = 0;
@@ -92,7 +94,7 @@ export default class InventoryCard extends React.Component{
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {rows.map(row => (
+                    {this.state.rows.map(row => (
                         <TableRow key={row.productid}>
                             <TableCell>{row.productid}</TableCell>
                             <TableCell>{row.fieldid}</TableCell>

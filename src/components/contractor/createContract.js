@@ -137,7 +137,6 @@ export default class CreateContract extends React.Component {
                         <option value="canola">Canola</option>
                         <option value="wheat">Wheat</option>
                         <option value="barley">Barley</option>
-                        <option value="hay">Hay</option>
                         <option value="bale">Bale</option>
                     </select>
                 </div>

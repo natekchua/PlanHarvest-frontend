@@ -129,7 +129,7 @@ export default class ContractsCard extends React.Component{
                 </Table>
                 <form>
                         <label htmlFor="Storage ID">Delete a Contract: Enter Contract ID</label>
-                        <input type="" name="delete" id="delete" onChange={this.onHandleChange}/>
+                        <input type="" name="delete" id="delete" onChange={this.handleChange}/>
                 </form>
                 <button onClick={this.onClick} className="btn">Confirm</button>
             </div>

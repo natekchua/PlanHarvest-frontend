@@ -67,7 +67,6 @@ export default class App extends React.Component {
                     <Route exact path="/edit-contract" component={() => <EditContract id={this.state.customerID} history={useHistory()}/>} />
                     <Route exact path="/edit-bin" component={() => <EditBin id={this.state.customerID} history={useHistory()}/>} />
                     <Route exact path="/edit-shed" component={() => <EditShed id={this.state.customerID} history={useHistory()}/>} />
-
                     <Route exact path="/contractor-dashboard" component={() => <CDashboard id={this.state.customerID} history={useHistory()}/>} />
                 </Switch>
             </Router>
