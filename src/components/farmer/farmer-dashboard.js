@@ -107,9 +107,9 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function Dashboard(func) {
+export default function Dashboard(props) {
     const classes = useStyles();
-    const [open, setOpen] = React.useState(true);
+    const [open, setOpen] = React.useState(false);
     const handleDrawerOpen = () => {
         setOpen(true);
     };
@@ -133,7 +133,7 @@ export default function Dashboard(func) {
                         <MenuIcon />
                     </IconButton>
                     <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-                        Farmer Dashboard    ID: {func.getID()}
+                        Farmer Dashboard    ID: {props.getID()}
                     </Typography>
                     <IconButton color="inherit">
                         <Badge color="secondary">
@@ -163,7 +163,7 @@ export default function Dashboard(func) {
                     <Grid container spacing={3}>
                         <Grid item xs={3} md={3} lg={3}>
                             <Paper className={fixedHeightPaper}>
-                                <Assets />
+                                <Assets farmerID={props.getID()}/>
                                 <PHButton routeTo="farmer-assets" message="View All Assets"/>
                             </Paper>
                         </Grid>

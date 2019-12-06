@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import React from 'react';
-import {Link} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 import { css, jsx } from '@emotion/core';
 import Button from "@material-ui/core/Button";
 
@@ -20,11 +20,13 @@ const linkStyle = css`
 `;
 
 export default function PHButton(props) {
+    let history = useHistory()
+    function onButtonClick(event) {
+      history.push(props.routeTo)
+    }
     return (
-        <Button css={viewMore}>
-            <Link to={props.routeTo} css={linkStyle} color="primary">
+        <Button css={viewMore} onClick={onButtonClick} color="primary">
                 {props.message}
-            </Link>
         </Button>
     );
 }

@@ -6,6 +6,9 @@ import { css, jsx } from "@emotion/core";
 import "react-datepicker/dist/react-datepicker.css";
 import Slider from "@material-ui/core/Slider";
 import withStyles from "@material-ui/core/styles/withStyles";
+import { thisExpression } from '@babel/types';
+import AddBale from "./addBale"
+import AddWheat from "./addWheat"
 
 const container = css`
     border-top: #344a72;
@@ -61,7 +64,41 @@ rail: {
 })(Slider);
 
 
-export default function EditProduct(){
+export default class EditProduct extends React.Component{
+    constructor(props) {
+        super(props)
+        this.state = {
+            typeForm: <AddBale></AddBale>
+        }
+    }
+
+    onChange = (event) => {
+
+        switch(event.target.value) {
+            case "bale":
+                this.setState({typeForm: <AddBale ></AddBale>})
+                break
+            case "wheat":
+                this.setState({typeForm: <AddWheat ></AddWheat>})
+                break
+            case "barley":
+                this.setState({typeForm: <AddBarley ></AddBarley>})
+                break
+            case "canola":
+                this.setState({typeForm: <AddCanola ></AddCanola>})
+                break
+        }
+    }
+
+    handleChange = (event) => {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+    }
+
+
+
+    render = () => {
     return (
         <body>
         <div css={container}>
@@ -69,39 +106,18 @@ export default function EditProduct(){
                 <h1>Add Product</h1>
                 <form>
                     <div css={formGroup}>
-                        <label css={formGroupLabel} htmlFor="product-type">Product Type</label>
-                        <select>
-                            <option value="grain">Grain</option>
+                        <label css={formGroupLabel} htmlFor="product-type" >Product Type</label>
+                        <select onChange={this.onChange}>
+                            <option value="bale">Bale</option>
                             <option value="wheat">Wheat</option>
                             <option value="barley">Barley</option>
                             <option value="canola">Canola</option>
-                            <option value="bale">Canola</option>
                         </select>
                     </div>
-                    <div css={formGroup}>
-                        <label css={formGroupLabel} htmlFor="grade">Grade</label>
-                        <div />
-                        <PrettoSlider valueLabelDisplay="auto" aria-label="pretto slider" defaultValue={20} />
-                        <div />
-                    </div>
-                    <div css={formGroup}>
-                        <label css={formGroupLabel} htmlFor="location">Location</label>
-                        <select>
-                            <option value="field-a">Field A</option>
-                            <option value="field-b">Field B</option>
-                        </select>
-                    </div>
-                    <div css={formGroup}>
-                        <label css={formGroupLabel} htmlFor="storage-type">Storage Type</label>
-                        <select>
-                            <option value="bin">Bin</option>
-                            <option value="shed">Shed</option>
-                        </select>
-                    </div>
-                        <button type="submit" className="btn">Confirm</button>
                 </form>
+                {this.state.typeForm}
+                </div>
             </div>
-        </div>
         </body>
-    );
+    );}
 }

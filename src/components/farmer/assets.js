@@ -7,8 +7,38 @@ import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import FieldCard from "./fieldCard";
 import {css, jsx} from "@emotion/core";
+import IP from "../../IP"
 
-export default function Assets() {
+export default class Assets extends React.Component {
+
+    constructor(props) {
+        super(props)
+        this.state = {
+            grids : []
+        }
+
+        this.fetchFields()
+    }
+
+    fetchFields = () => {
+        fetch(IP + "farmer/assets/fieldSummary/" + this.props.id)
+        .then(response => {
+            response.json().then(values => {
+                for(var value of values) {
+                    this.state.grids.push(<Grid item xs={4} md={4} lg={4}>
+                                <FieldCard photo="https://unsplash.com/photos/Zm2n2O7Fph4"
+                               name={value.fieldID}
+                               location={value.location}
+                               bins={value.numBins}
+                               sheds={value.numSheds}/>
+                                </Grid>)
+                }
+            })
+        })
+        .catch(err => console.log(err))
+    }
+
+    render =() => {
     return (
         <Layout>
             <Container maxWidth="lg">
@@ -19,27 +49,9 @@ export default function Assets() {
                     justifyContent="center"
                     alignItems="center"
                     >
-                    <Grid item xs={4} md={4} lg={4}>
-                        <FieldCard photo="https://unsplash.com/photos/Zm2n2O7Fph4"
-                                   name="A"
-                                   location="South Point"
-                                   bins="5"
-                                   sheds="3"/>
-                    </Grid>
-                    <Grid item xs={4} md={4} lg={4}>
-                        <FieldCard name="B"
-                                   location="North End"
-                                   bins="2"
-                                   sheds="10"/>
-                    </Grid>
-                    <Grid item xs={4} md={4} lg={4}>
-                        <FieldCard name="C"
-                                   location="Main Headquarters"
-                                   bins="8"
-                                   sheds="8"/>
-                    </Grid>
+                    {this.state.grids}
                 </Grid>
             </Container>
         </Layout>
-    );
+    );}
 }

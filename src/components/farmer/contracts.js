@@ -11,7 +11,7 @@ export default function Contracts() {
             <>
                 <ControlBar name="inventoryBar" forUser="farmer" type="contract"/>
                 <Divider />
-                <ContractsContent side="farmer"/>
+                <ContractsContent type="farmer"/>
             </>
         </Layout>
     );

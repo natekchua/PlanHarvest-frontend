@@ -10,16 +10,17 @@ import TableRow from '@material-ui/core/TableRow';
 import { css, jsx } from '@emotion/core';
 import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from "@material-ui/icons/Delete";
+import IP from '../../IP'
 
 // Generate Order Data
-function createProductSummary(type, amount, grade) {
-    return { type, amount, grade };
+function createProductSummary(type, amount) {
+    return { type, amount};
 }
 
 const rows = [
-    createProductSummary('Grain', 100, 3),
-    createProductSummary('Wheat', 50, 2),
-    createProductSummary('Canola', 50, 2),
+    createProductSummary('Grain', 100),
+    createProductSummary('Wheat', 50),
+    createProductSummary('Canola', 50),
 
 ];
 
@@ -30,7 +31,28 @@ const cardContainer = css`
   flex-direction: column;
 `;
 
-export default function InventorySummary() {
+export default class InventorySummary extends React.Component {
+
+    constructor(props) {
+        super(props)
+        this.rows = []
+        this.fetchData()
+    }
+
+    fetchData = () => {
+        fetch(IP + '/farmer/inventory/inventorySummary/' + this.props.id)
+        .then(response => {
+            response.json().then(values => {
+                for (var value in values) {
+                    rows.push(createProductSummary(
+                        value.type, value.amount
+                    ))
+                }
+            })
+        })
+    }
+
+    render = () => {
     return (
         <div css={cardContainer}>
             <h1>Inventory</h1>
@@ -39,7 +61,6 @@ export default function InventorySummary() {
                     <TableRow>
                         <TableCell>Product Type</TableCell>
                         <TableCell>Amount</TableCell>
-                        <TableCell>Grade</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -47,11 +68,10 @@ export default function InventorySummary() {
                         <TableRow key={row.type}>
                             <TableCell>{row.type}</TableCell>
                             <TableCell>{row.amount}</TableCell>
-                            <TableCell>{row.grade}</TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
             </Table>
         </div>
-    );
+    );}
 }

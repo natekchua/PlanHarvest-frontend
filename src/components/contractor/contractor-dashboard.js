@@ -32,7 +32,7 @@ export default class contractDashboard extends React.Component{
                         <Grid container spacing={3}>
                             <Grid item xs={8} md={8} lg={8}>
                                 <Paper>
-                                    <Contracts />
+                                    <Contracts id={this.state.id} type="customer"/>
                                 </Paper>
                             </Grid>
                             <Grid item xs={4} md={4} lg={4}>

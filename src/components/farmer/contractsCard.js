@@ -35,18 +35,28 @@ const cardContainer = css`
 export default class ContractsCard extends React.Component{
     constructor(props) {
         super(props)
+        this.rows = this.props.type === "farmer" ? this.getFarmerRows() : this.getCustomerRows()
+    }
+
+    getFarmerRows = () => {
+       // fetch("")
+    }
+
+    getCustomerRows =() => {
+
     }
     
     render = () => {
+        let title = this.props.type === "farmer" ? "Contracts" : "Contracts - Your ID: " + this.props.id 
         return (
             <div css={cardContainer}>
-                <h1>Contracts</h1>
+                <h1>{title}</h1>
                 <Table size="small">
                     <TableHead>
                         <TableRow>
-                            <TableCell>Customer ID</TableCell>
                             <TableCell>Contract ID</TableCell>
                             <TableCell>Farm ID</TableCell>
+                            <TableCell>Product Type</TableCell>
                             <TableCell>Number of Loads</TableCell>
                             <TableCell>Start Date</TableCell>
                             <TableCell>Expected Delivery Date</TableCell>
@@ -57,7 +67,6 @@ export default class ContractsCard extends React.Component{
                     <TableBody>
                         {rows.map(row => (
                             <TableRow key={row.id}>
-                                <TableCell>{row.custID}</TableCell>
                                 <TableCell>{row.contractID}</TableCell>
                                 <TableCell>{row.farmID}</TableCell>
                                 <TableCell>{row.numLoads}</TableCell>

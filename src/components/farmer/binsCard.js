@@ -37,7 +37,12 @@ const cardContainer = css`
   flex-direction: column;
 `;
 
-export default function BinsCard() {
+export default class BinsCard extends React.Component{
+    constructor(props) {
+        super(props)
+    }
+
+    render = () => {
     return (
         <div css={cardContainer}>
             <h1>Bins</h1>
@@ -71,4 +76,5 @@ export default function BinsCard() {
             </Table>
         </div>
     );
+    }
 }
