@@ -38,7 +38,7 @@ export default class CustomerSignUpCard extends React.Component{
                             response.text().then(value => {
                                 console.log(this.props)
                                 this.props.setCustomerID(value)
-                                window.location = "/contractor-dashboard"
+                                this.props.history.push("/contractor-dashboard")
                             })
                         } else {
                             this.setState({
