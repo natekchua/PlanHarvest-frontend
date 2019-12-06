@@ -10,6 +10,7 @@ import TableRow from '@material-ui/core/TableRow';
 import { css, jsx } from '@emotion/core';
 import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from "@material-ui/icons/Delete";
+import IP from "../../IP";
 
 // Generate Order Data
 function createProduct(prodID, fieldID, type, grade, dateStored) {
@@ -36,8 +37,47 @@ const cardContainer = css`
   flex-direction: column;
 `;
 
-export default function InventoryCard() {
-    return (
+export default class InventoryCard extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+            rows: [],
+            delete: null
+        }
+    }
+
+    getProductTuples = () => {
+        fetch(IP + "farmer/inventory/view" + this.props.id)
+            .then(response => {
+                response.json().then(values => {
+                    let i = 0;
+                    let temp = [];
+                    for (var value of values) {
+                        value.id = i++;
+                        temp.push(value)
+                    }
+
+                    this.setState({
+                        rows: temp
+                    })
+                })}) .catch(err => console.log(err))
+    };
+
+    onClick = (event) => {
+        fetch(IP + "farmer/inventory/delete" + this.state.delete)
+            .then(response => { console.log(response)
+            })
+            .catch(err => console.log(err))
+    }
+
+    handleChange = (event) => {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+    }
+
+    render = () => {
+        return (
         <div css={cardContainer}>
             <h1>Inventory</h1>
             <Table size="small">
@@ -53,21 +93,27 @@ export default function InventoryCard() {
                 </TableHead>
                 <TableBody>
                     {rows.map(row => (
-                        <TableRow key={row.prodID}>
-                            <TableCell>{row.prodID}</TableCell>
-                            <TableCell>{row.fieldID}</TableCell>
+                        <TableRow key={row.productid}>
+                            <TableCell>{row.productid}</TableCell>
+                            <TableCell>{row.fieldid}</TableCell>
                             <TableCell>{row.type}</TableCell>
                             <TableCell>{row.grade}</TableCell>
-                            <TableCell align="right">{row.dateStored}</TableCell>
-                            <TableCell>
-                                <IconButton aria-label="delete">
-                                    <DeleteIcon />
-                                </IconButton>
-                            </TableCell>
+                            <TableCell align="right">{row.datestored}</TableCell>
+                            {/*<TableCell>*/}
+                            {/*    <IconButton aria-label="delete">*/}
+                            {/*        <DeleteIcon />*/}
+                            {/*    </IconButton>*/}
+                            {/*</TableCell>*/}
                         </TableRow>
                     ))}
                 </TableBody>
             </Table>
+            <form>
+                <label htmlFor="Product ID">Delete a Product: Enter Product ID</label>
+                <input type="" name="delete" id="delete" onChange={this.onHandleChange}/>
+            </form>
+            <button onClick={this.onClick} className="btn">Confirm</button>
         </div>
-);
+    );
+    }
 }
