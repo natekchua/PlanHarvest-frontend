@@ -15,26 +15,34 @@ const gridSpacing = css`
   margin: 1rem;
 `;
 
-export default function contractDashboard(){
-    return (
-        <Layout>
-            <Grid css={gridSpacing}>
-                <Container maxWidth="lg">
-                    <Grid container spacing={3}>
-                        <Grid item xs={8} md={8} lg={8}>
-                            <Paper>
-                                <Contracts />
-                                <PHButton routeTo="farmer-contracts" message="View All Contracts"/>
-                            </Paper>
+export default class contractDashboard extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+            id: this.props.id
+        }
+    }
+
+    render = () => {
+        return (
+            
+            <Layout>
+                <Grid css={gridSpacing}>
+                    <Container maxWidth="lg">
+                        <Grid container spacing={3}>
+                            <Grid item xs={8} md={8} lg={8}>
+                                <Paper>
+                                    <Contracts />
+                                </Paper>
+                            </Grid>
+                            <Grid item xs={4} md={4} lg={4}>
+                                <Paper>
+                                    <CreateContract />
+                                </Paper>
+                            </Grid>
                         </Grid>
-                        <Grid item xs={4} md={4} lg={4}>
-                            <Paper>
-                                <CreateContract />
-                            </Paper>
-                        </Grid>
-                    </Grid>
-                </Container>
-            </Grid>
-        </Layout>
-    );
+                    </Container>
+                </Grid>
+            </Layout>
+    )}
 }

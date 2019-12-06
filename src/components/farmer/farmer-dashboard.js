@@ -107,7 +107,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function Dashboard() {
+export default function Dashboard(func) {
     const classes = useStyles();
     const [open, setOpen] = React.useState(true);
     const handleDrawerOpen = () => {
@@ -133,7 +133,7 @@ export default function Dashboard() {
                         <MenuIcon />
                     </IconButton>
                     <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-                        Farmer Dashboard
+                        Farmer Dashboard    ID: {func.getID()}
                     </Typography>
                     <IconButton color="inherit">
                         <Badge color="secondary">

@@ -32,51 +32,57 @@ const cardContainer = css`
   border-radius: 5px;
 `;
 
-export default function ContractsCard(props) {
-    return (
-        <div css={cardContainer}>
-            <h1>Contracts</h1>
-            <Table size="small">
-                <TableHead>
-                    <TableRow>
-                        <TableCell>Customer ID</TableCell>
-                        <TableCell>Contract ID</TableCell>
-                        <TableCell>Farm ID</TableCell>
-                        <TableCell>Number of Loads</TableCell>
-                        <TableCell>Start Date</TableCell>
-                        <TableCell>Expected Delivery Date</TableCell>
-                        <TableCell align="right">Status</TableCell>
-                        <TableCell/>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {rows.map(row => (
-                        <TableRow key={row.id}>
-                            <TableCell>{row.custID}</TableCell>
-                            <TableCell>{row.contractID}</TableCell>
-                            <TableCell>{row.farmID}</TableCell>
-                            <TableCell>{row.numLoads}</TableCell>
-                            <TableCell>{row.startDate}</TableCell>
-                            <TableCell>{row.deliveryByDate}</TableCell>
-                            {props.side === "farmer" ? (
-                                <TableCell align="right">
-                                    <CompleteButton />
-                                </TableCell>
-                            ) : (
-                                <TableCell align="right">{row.outcome}</TableCell>
-                            )
-                            }
-                            <TableCell>
-                                <IconButton aria-label="delete">
-                                    <DeleteIcon />
-                                </IconButton>
-                            </TableCell>
-
+export default class ContractsCard extends React.Component{
+    constructor(props) {
+        super(props)
+    }
+    
+    render = () => {
+        return (
+            <div css={cardContainer}>
+                <h1>Contracts</h1>
+                <Table size="small">
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>Customer ID</TableCell>
+                            <TableCell>Contract ID</TableCell>
+                            <TableCell>Farm ID</TableCell>
+                            <TableCell>Number of Loads</TableCell>
+                            <TableCell>Start Date</TableCell>
+                            <TableCell>Expected Delivery Date</TableCell>
+                            <TableCell align="right">Status</TableCell>
+                            <TableCell/>
                         </TableRow>
-                    ))}
-                </TableBody>
-            </Table>
-        </div>
+                    </TableHead>
+                    <TableBody>
+                        {rows.map(row => (
+                            <TableRow key={row.id}>
+                                <TableCell>{row.custID}</TableCell>
+                                <TableCell>{row.contractID}</TableCell>
+                                <TableCell>{row.farmID}</TableCell>
+                                <TableCell>{row.numLoads}</TableCell>
+                                <TableCell>{row.startDate}</TableCell>
+                                <TableCell>{row.deliveryByDate}</TableCell>
+                                {this.props.type === "farmer" ? (
+                                    <TableCell align="right">
+                                        <CompleteButton />
+                                    </TableCell>
+                                ) : (
+                                    <TableCell align="right">{row.outcome}</TableCell>
+                                )
+                                }
+                                <TableCell>
+                                    <IconButton aria-label="delete">
+                                        <DeleteIcon />
+                                    </IconButton>
+                                </TableCell>
 
-    );
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+            </div>
+
+        );
+    }
 }

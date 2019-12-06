@@ -10,8 +10,8 @@ export default class Showcase extends Component {
                         The Future of <br/>Farm Management
                     </h1>
                     <div className="btn-container">
-                        <a href="signup" className="btn lead">I Am a Contractor</a>
-                        <a href="signup" className="btn lead">I Am a Farmer</a>
+                        <a href="signup/customer" className="btn lead">I Am a Contractor</a>
+                        <a href="signup/farmer" className="btn lead">I Am a Farmer</a>
                     </div>
                 </div>
             </header>
