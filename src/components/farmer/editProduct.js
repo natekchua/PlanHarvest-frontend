@@ -9,6 +9,8 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import { thisExpression } from '@babel/types';
 import AddBale from "./addBale"
 import AddWheat from "./addWheat"
+import AddCanola from "./addCanola"
+import AddBarley from "./addBarley"
 
 const container = css`
     border-top: #344a72;

@@ -67,12 +67,13 @@ export default class AddWheat extends React.Component{
     constructor(props) {
         super(props)
         this.state = {
-            type: "wheat",
+            type: "barley",
             fieldID: null,
             storageID: null,
             percentage: null,
             grade: 0,
-            hasBad: false
+            hasBad: false,
+            hasBad2: false
         }
     }
 
@@ -98,12 +99,13 @@ export default class AddWheat extends React.Component{
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                grainType: 'wheat',
+                grainType: 'barley',
                 fieldID: this.state.fieldID,
                 storageID: this.state.storageID,
                 grade: this.state.grade,
-                percentage: '15',
-                hasBad: true
+                percentage: this.state.percentage,
+                hasBad: this.state.hasBad,
+                hasBad2: this.state.hasBad2
             })
         }).then(response => console.log(response))
         .catch(err => console.log(err))
@@ -131,14 +133,12 @@ export default class AddWheat extends React.Component{
                         <input type="storageID" name="storageID" id="storageID" onChange={this.handleChange}/>
                     </div>
                     <div css={formGroup}>
-                        <label css={formGroupLabel} htmlFor="percentage">Protein Percentage</label>
-                        <div />
-                        <PrettoSlider valueLabelDisplay="auto" aria-label="pretto slider" name="percentage" defaultValue={20} onChange={this.handleChange}/>
-                        <div />
+                        <label htmlFor="hasBad">Is it hulled? </label>
+                        <input type="checkbox" name="hasBad" id="hasBad" onChange={this.handleChange}/>
                     </div>
                     <div css={formGroup}>
-                        <label htmlFor="hasBad">Does it have ergot? </label>
-                        <input type="checkbox" name="hasBad" id="hasBad" onChange={this.handleChange}/>
+                        <label htmlFor="hasBad">Does it have blight? </label>
+                        <input type="checkbox" name="hasBad2" id="hasBad2" onChange={this.handleChange}/>
                     </div>
                 </form>
                 <button onClick={this.submitClick} className="btn">Confirm</button>

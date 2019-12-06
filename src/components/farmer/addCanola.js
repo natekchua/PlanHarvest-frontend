@@ -7,6 +7,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import Slider from "@material-ui/core/Slider";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { thisExpression } from '@babel/types';
+import IP from '../../IP'
 
 const container = css`
     border-top: #344a72;
@@ -62,15 +63,15 @@ rail: {
 })(Slider);
 
 
-export default class AddBale extends React.Component{
+export default class AddCanola extends React.Component{
     constructor(props) {
         super(props)
         this.state = {
-            type: "straw",
+            type: "canola",
             fieldID: null,
             storageID: null,
-            percentage: null,
-            hasBad: null
+            percentage: 20,
+            grade: 0,
         }
     }
 
@@ -88,7 +89,22 @@ export default class AddBale extends React.Component{
     }
 
     submitClick = (event) => {
-        
+        console.log(this.state)
+        fetch(IP + "farmer/inventory/addProduct/grain", {
+            method: 'POST',
+                headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                grainType: 'canola',
+                fieldID: this.state.fieldID,
+                storageID: this.state.storageID,
+                grade: this.state.grade,
+                percentage: this.state.percentage
+            })
+        }).then(response => console.log(response))
+        .catch(err => console.log(err))
     }
 
 
@@ -101,11 +117,11 @@ export default class AddBale extends React.Component{
                     <div css={formGroup}>
                         <label css={formGroupLabel} htmlFor="grade">Grade</label>
                         <div />
-                        <PrettoSlider valueLabelDisplay="auto" aria-label="pretto slider" defaultValue={20} />
+                        <PrettoSlider valueLabelDisplay="auto" aria-label="pretto slider" name="grade" defaultValue={0} max={3} onChange={this.handleChange}/>
                         <div />
                     </div>
                     <div css={formGroup}>
-                        <label htmlFor="Field ID">Field ID</label>
+                        <label htmlFor="Field ID">Field ID </label>
                         <input type="fieldID" name="fieldID" id="fieldID" onChange={this.handleChange}/>
                     </div>
                     <div css={formGroup}>
@@ -113,12 +129,10 @@ export default class AddBale extends React.Component{
                         <input type="storageID" name="storageID" id="storageID" onChange={this.handleChange}/>
                     </div>
                     <div css={formGroup}>
-                        <label htmlFor="percentage">Protein Percentage</label>
-                        <input type="percentage" name="percentage" id="percentage" onChange={this.handleChange}/>
-                    </div>
-                    <div css={formGroup}>
-                        <label htmlFor="hasBad">Does it have ergot?</label>
-                        <input type="checkbox" name="hasBad" id="hasBad" onChange={this.handleChange}/>
+                        <label css={formGroupLabel} htmlFor="percentage">Green Percentage</label>
+                        <div />
+                        <PrettoSlider valueLabelDisplay="auto" aria-label="pretto slider" name="percentage" defaultValue={20} onChange={this.handleChange}/>
+                        <div />
                     </div>
                 </form>
                 <button onClick={this.submitClick} className="btn">Confirm</button>

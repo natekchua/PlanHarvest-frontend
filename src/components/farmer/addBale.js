@@ -69,7 +69,8 @@ export default class AddBale extends React.Component{
         this.state = {
             type: "straw",
             fieldID: null,
-            storageID: null   
+            storageID: null,
+            grade: 0
         }
     }
 
@@ -87,23 +88,22 @@ export default class AddBale extends React.Component{
     }
 
     submitClick = (event) => {
-        console.log("fetching")
-        fetch(IP + "farmer/inventory/addProduct/grain", {
-            method: 'POST',
-                headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                grainType: 'wheat',
-                fieldID: '1',
-                storageID: '1',
-                grade: '0',
-                percentage: '15',
-                hasBad: true
-            })
-        }).then(response => console.log(response))
-        .catch(err => console.log(err))
+        if (this.state.fieldID && this.state.storageID) {
+            fetch(IP + "farmer/inventory/addProduct/bale", {
+                method: 'POST',
+                    headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    baleType: this.state.type,
+                    fieldID: this.state.fieldID,
+                    storageID:  this.state.storageID,
+                    grade: this.state.grade,
+                })
+            }).then(response => console.log(response))
+            .catch(err => console.log(err))
+        }
     }
 
 
@@ -120,11 +120,11 @@ export default class AddBale extends React.Component{
                     <div css={formGroup}>
                         <label css={formGroupLabel} htmlFor="grade">Grade</label>
                         <div />
-                        <PrettoSlider valueLabelDisplay="auto" aria-label="pretto slider" defaultValue={20} />
+                        <PrettoSlider valueLabelDisplay="auto" aria-label="pretto slider" name="grade" defaultValue={0} max={3} onChange={this.handleChange}/>
                         <div />
                     </div>
                     <div css={formGroup}>
-                        <label htmlFor="Field ID">Field ID</label>
+                        <label htmlFor="Field ID">Field ID </label>
                         <input type="fieldID" name="fieldID" id="fieldID" onChange={this.handleChange}/>
                     </div>
                     <div css={formGroup}>
